@@ -21,7 +21,8 @@ body {
 }
 
 h1 {
-    padding: 200px 0px 100px 0px;
+    padding: 100px 0px 100px 0px;
+    margin: 0 5%;
     display: block;
 }
 
@@ -99,12 +100,12 @@ h1 {
 
 .fade-in {
   animation: fadeIn 3s forwards;
-  animation-delay: 3s; /* 애니메이션 지연을 5초로 설정 */
-  opacity: 0; /* 기본 상태를 투명도로 설정 */
+  animation-delay: 2.5s;
+  opacity: 0;
   font-size: calc(8px + 2vw);
-  color: #a0a0a0; /* 원하는 색상 */
-  text-align: center; /* 가운데 정렬 */
-  margin-top: 100px; /* 상단 마진 */
+  color: #a0a0a0;
+  text-align: center;
+  margin-top: 100px;
 }
 
 .view {
@@ -117,26 +118,27 @@ flex-wrap: wrap;
 .block { 
 height: 200px;
 width: 100%;
-margin: 50px;
+margin: 5vw 0vh;
+border-radius: 10px;
 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 position: relative;
-animation: grow 2s forwards;
 display: flex;
-align-items: flex-start; /* 블록의 상단에 콘텐츠를 정렬 */
+align-items: flex-start;
 padding: 10px;
 }
 
-
-@keyframes grow {
-    from {
-      transform: scale(0.5);
-    }
-    to {
-      transform: scale(1);
-    }
+@media (min-width: 768px) {
+  .block {
+    margin: 5vw 7vh;
+    border-radius: 25px;
   }
+
+  h1 {
+    font-size: calc(8px + 3vw);
+  }
+}
 
 input[type="checkbox"] {
     display: inline-block;
@@ -157,89 +159,30 @@ input[type="checkbox"] {
     display: none;
 }
 
-
-@keyframes appear {
-from {
-    opacity: 0;
-    clip-path: inset(100% 100% 0 0);
-}
-to {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-}
-}
-
-.block {
-animation: appear linear;
-animation-timeline: view();
-animation-range: entry 0% cover 40%;
-}
-
 #block1 .content {
-    display: block;
+  display: block;
 }
 
 #block2 .locked, #block3 .locked {
-    display: block;
+  display: block;
 }
 
 .block:nth-child(1) {
-background: rgb(232, 88, 67);
+  background: rgb(255, 255, 255);
 }
 .block:nth-child(2) {
-background: rgb(26, 84, 207);
+  background: rgb(255, 255, 255);
 }
 .block:nth-child(3) {
-background: rgb(36, 217, 127);
+  background: rgb(255, 255, 255);
 }
 .block:nth-child(4) {
-background: rgb(157, 86, 247);
+  background: rgb(255, 255, 255);
 }
 .block:nth-child(5) {
-background: rgb(250, 201, 82);
+  background: rgb(255, 255, 255);
 }
 .block:nth-child(6) {
-background: rgb(26, 84, 207);
+  background: rgb(255, 255, 255);
 }
-.block:nth-child(7) {
-background: rgb(157, 86, 247);
-}
-.block:nth-child(8) {
-background: rgb(36, 217, 127);
-}
-.block:nth-child(9) {
-background: rgb(232, 88, 67);
-}
-.block:nth-child(10) {
-background: rgb(250, 201, 82);
-}
-.block:nth-child(11) {
-background: rgb(26, 84, 207);
-}
-.block:nth-child(12) {
-background: rgb(36, 217, 127);
-}
-.block:nth-child(13) {
-background: rgb(157, 86, 247);
-}
-.block:nth-child(14) {
-background: rgb(250, 201, 82);
-}
-.block:nth-child(15) {
-background: rgb(232, 88, 67);
-}
-.block:nth-child(16) {
-background: rgb(36, 217, 127);
-}
-.block:nth-child(17) {
-background: rgb(157, 86, 247);
-}
-.block:nth-child(18) {
-background: rgb(26, 84, 207);
-}
-.block:nth-child(19) {
-background: rgb(250, 201, 82);
-}
-.block:nth-child(20) {
-background: rgb(232, 88, 67);
-}
+  
