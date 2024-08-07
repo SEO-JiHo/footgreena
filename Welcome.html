@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Welcome!</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <h1 class="block-effect" style="--td: 1.2s">
+            <img src="" width="20%">
+            <div class="block-reveal" style="--bc: #3dcbff; --d: .1s">풋그리나에 오신 것을</div>
+            <div class="block-reveal" style="--bc: #7c009b; --d: .5s">환영합니다! <i class="fa-regular fa-futbol"></i></div>
+            <div class="fade-in">아래 안내 사항을 끝까지 읽어주세요</div>
+          </h1>
+        <div class="view">
+            <div class="block" id="block1">
+                <div class="content">
+                    <p>Content of Block 1</p>
+                    <label>
+                        <input type="checkbox" id="check1" />
+                        I agree to see the next block
+                    </label>
+                </div>
+            </div>
+            <div class="block" id="block2">        
+                <div class="content">
+                    <p>Content of Block 2</p>
+                    <label>
+                        <input type="checkbox" id="check2" />
+                        I agree to see the next block
+                    </label>
+                </div>
+                <i class="fas fa-lock locked"></i>
+            </div>
+            <div class="block" id="block3">
+                <div class="content">
+                    <p>Content of Block 3</p>
+                    <label>
+                        <input type="checkbox" id="check3" />
+                        I agree to see the next block
+                    </label>
+                </div>
+                <i class="fas fa-lock locked"></i>
+            </div>
+            <div class="block">
+                <div class="content">
+                    <p>this is it</p>
+                </div>
+            </div>
+            <div class="block"></div>
+            <div class="block"></div>
+
+        </div>
+        <script src="scrpit.js"></script>
+    </body>
+</html>

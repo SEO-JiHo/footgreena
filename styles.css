@@ -1,0 +1,245 @@
+/* reset */
+*,
+*::before,
+*::after {
+  margin: 1px;
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  min-height: 100vh;
+  padding: 20px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: rgb(255, 255, 255);
+}
+
+h1 {
+    padding: 200px 0px 100px 0px;
+    display: block;
+}
+
+/* block-$ */
+.block-effect {
+  font-size: calc(8px + 6vw);
+}
+
+.block-reveal {
+  --t: calc(var(--td) + var(--d));
+
+  color: transparent;
+  padding: 4px;
+
+  position: relative;
+  overflow: hidden;
+
+  animation: revealBlock 0s var(--t) forwards;
+}
+
+.block-reveal::after {
+  content: '';
+
+  width: 0%;
+  height: 100%;
+  padding-bottom: 4px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background: var(--bc);
+  animation: revealingIn var(--td) var(--d) forwards, revealingOut var(--td) var(--t) forwards;
+}
+
+
+/* animations */
+@keyframes revealBlock {
+  100% {
+    color: #000000;
+  }
+}
+
+@keyframes revealingIn {
+
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes revealingOut {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 3s forwards;
+  animation-delay: 3s; /* 애니메이션 지연을 5초로 설정 */
+  opacity: 0; /* 기본 상태를 투명도로 설정 */
+  font-size: calc(8px + 2vw);
+  color: #a0a0a0; /* 원하는 색상 */
+  text-align: center; /* 가운데 정렬 */
+  margin-top: 100px; /* 상단 마진 */
+}
+
+.view {
+width: 100%;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+}
+
+.block { 
+height: 200px;
+width: 100%;
+margin: 50px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+position: relative;
+animation: grow 2s forwards;
+display: flex;
+align-items: flex-start; /* 블록의 상단에 콘텐츠를 정렬 */
+padding: 10px;
+}
+
+
+@keyframes grow {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+input[type="checkbox"] {
+    display: inline-block;
+}
+
+.content {
+    display: none;
+    width: 100;
+}
+
+.block .locked {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4vh;
+    color: gray;
+    display: none;
+}
+
+
+@keyframes appear {
+from {
+    opacity: 0;
+    clip-path: inset(100% 100% 0 0);
+}
+to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+}
+}
+
+.block {
+animation: appear linear;
+animation-timeline: view();
+animation-range: entry 0% cover 40%;
+}
+
+#block1 .content {
+    display: block;
+}
+
+#block2 .locked, #block3 .locked {
+    display: block;
+}
+
+.block:nth-child(1) {
+background: rgb(232, 88, 67);
+}
+.block:nth-child(2) {
+background: rgb(26, 84, 207);
+}
+.block:nth-child(3) {
+background: rgb(36, 217, 127);
+}
+.block:nth-child(4) {
+background: rgb(157, 86, 247);
+}
+.block:nth-child(5) {
+background: rgb(250, 201, 82);
+}
+.block:nth-child(6) {
+background: rgb(26, 84, 207);
+}
+.block:nth-child(7) {
+background: rgb(157, 86, 247);
+}
+.block:nth-child(8) {
+background: rgb(36, 217, 127);
+}
+.block:nth-child(9) {
+background: rgb(232, 88, 67);
+}
+.block:nth-child(10) {
+background: rgb(250, 201, 82);
+}
+.block:nth-child(11) {
+background: rgb(26, 84, 207);
+}
+.block:nth-child(12) {
+background: rgb(36, 217, 127);
+}
+.block:nth-child(13) {
+background: rgb(157, 86, 247);
+}
+.block:nth-child(14) {
+background: rgb(250, 201, 82);
+}
+.block:nth-child(15) {
+background: rgb(232, 88, 67);
+}
+.block:nth-child(16) {
+background: rgb(36, 217, 127);
+}
+.block:nth-child(17) {
+background: rgb(157, 86, 247);
+}
+.block:nth-child(18) {
+background: rgb(26, 84, 207);
+}
+.block:nth-child(19) {
+background: rgb(250, 201, 82);
+}
+.block:nth-child(20) {
+background: rgb(232, 88, 67);
+}
