@@ -16,35 +16,52 @@ document.addEventListener('DOMContentLoaded', function () {
         if (form) {
             form.addEventListener('submit', function (event) {
                 event.preventDefault(); // 기본 폼 제출 동작을 막음
+
+                const submitButton = form.querySelector('button[type="submit"]');
+                if (submitButton) {
+                    submitButton.disabled = true; // 제출 버튼 비활성화
+                }
+
                 fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams(new FormData(event.target)).toString()
                 }).then(() => {
-                    if (lockedIcon) {
-                        lockedIcon.style.display = 'none';
+                    // 체크박스 상태를 체크된 상태로 변경
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        checkbox.dispatchEvent(new Event('change'));
                     }
+                    
+                    // 다음 블록의 콘텐츠를 표시
                     showNextBlock(index);
-                }).catch((error) => alert(error));
+                }).catch((error) => {
+                    alert(error);
+                    if (submitButton) {
+                        submitButton.disabled = false; // 에러가 발생하면 제출 버튼을 다시 활성화
+                    }
+                });
             });
         }
 
         // 체크박스 상태를 감지하여 다음 블록의 콘텐츠를 표시
-        checkbox.addEventListener('change', function () {
-            if (this.checked) {
-                if (lockedIcon) {
-                    lockedIcon.style.display = 'none';
-                }
+        if (checkbox) {
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    if (lockedIcon) {
+                        lockedIcon.style.display = 'none';
+                    }
 
-                // 체크 박스를 비활성화
-                this.disabled = true;
-                showNextBlock(index);
-            } else {
-                if (lockedIcon) {
-                    lockedIcon.style.display = 'block';
+                    // 체크 박스를 비활성화
+                    this.disabled = true;
+                    showNextBlock(index);
+                } else {
+                    if (lockedIcon) {
+                        lockedIcon.style.display = 'block';
+                    }
                 }
-            }
-        });
+            });
+        }
 
         function showNextBlock(currentIndex) {
             const nextBlock = blocks[currentIndex + 1];

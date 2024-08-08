@@ -8,22 +8,44 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
+
         <h1 class="block-effect" style="--td: 1.2s">
             <img src="images/logo.png" width="20%">
             <div class="block-reveal" style="--bc: #3dcbff; --d: .1s">풋그리나에 오신 것을</div>
             <div class="block-reveal" style="--bc: #7c009b; --d: .5s">환영합니다! <i class="fa-regular fa-futbol"></i></div>
             <div class="fade-in">아래 안내 사항을 끝까지 읽어주세요</div>
-          </h1>
+        </h1>
+
         <div class="view">
             <div class="block" id="block1">
                 <div class="content">
-                    <p>Content of Block 1</p>
-                    <label>
+                    <h4>정보 확인</h4>
+                    <p>소모임 가입 정보와 일치하는지 확인하기 위해 이름과 성별을 입력 후 확인 버튼을 눌러주세요.</p>
+                    <div class="block-in">
+                        <form name="user-data" method="POST" data-netlify="true">
+                            <p>
+                                <label for="name">이름: <input type="text" name="name" id="name" required /></label>
+                            </p>
+                            <p>
+                                <label>성별:
+                                    <input type="radio" name="gender" value="male" required /> 남자
+                                </label>
+                                <label>
+                                    <input type="radio" name="gender" value="female" required /> 여자
+                                </label>
+                            </p>
+                            <p class="button-container">
+                                <button type="submit" class="btn">확인</button>
+                            </p>
+                        </form>
+                    </div>
+                    <label style="display: none;">
                         <input type="checkbox" id="check1" />
                         I agree to see the next block
                     </label>
                 </div>
             </div>
+            
             <div class="block" id="block2">        
                 <div class="content">
                     <p>Content of Block 2</p>
@@ -35,6 +57,7 @@
                 <i class="fas fa-lock locked"></i>
                 <i class="fas fa-unlock unlocked"></i>
             </div>
+
             <div class="block" id="block3">
                 <div class="content">
                     <p>Content of Block 3</p>
@@ -46,13 +69,42 @@
                 <i class="fas fa-lock locked"></i>
                 <i class="fas fa-unlock unlocked"></i>
             </div>
-            <div class="block">
+
+            <div class="block" id="block4">
                 <div class="content">
-                    <p>this is it</p>
+                    <p>Content of Block 4</p>
+                    <label>
+                        <input type="checkbox" id="check4" />
+                        I agree to see the next block
+                    </label>
                 </div>
+                <i class="fas fa-lock locked"></i>
+                <i class="fas fa-unlock unlocked"></i>
             </div>
-            <div class="block"></div>
-            <div class="block"></div>
+
+            <div class="block" id="block5">
+                <div class="content">
+                    <p>Content of Block 5</p>
+                    <label>
+                        <input type="checkbox" id="check5" />
+                        I agree to see the next block
+                    </label>
+                </div>
+                <i class="fas fa-lock locked"></i>
+                <i class="fas fa-unlock unlocked"></i>
+            </div>
+
+            <div class="block" id="block6">
+                <div class="content">
+                    <p>Content of Block 6</p>
+                    <label>
+                        <input type="checkbox" id="check6" />
+                        I agree to see the next block
+                    </label>
+                </div>
+                <i class="fas fa-lock locked"></i>
+                <i class="fas fa-unlock unlocked"></i>
+            </div>
 
         </div>
         <script src="scrpit.js"></script>
