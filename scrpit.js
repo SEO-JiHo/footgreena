@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const lockedIcon = block.querySelector('.locked');
         const unlockedIcon = block.querySelector('.unlocked');
         const form = block.querySelector('form');
+        const numberInput = block.querySelector('input[type="text"]');
+        const numberButton = block.querySelector('button[type="button"]');
 
         // 첫 번째 블록은 초기 상태에서 보이도록 설정
         if (index === 0) {
@@ -59,6 +61,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (lockedIcon) {
                         lockedIcon.style.display = 'block';
                     }
+                }
+            });
+        }
+
+        if (numberInput && numberButton) {
+            numberButton.addEventListener('click', function () {
+                const value = numberInput.value;
+                const expectedNumber = index === 1 ? '2' : index === 2 ? '10' : ''; // 예시: 각 블록에서 요구하는 숫자
+
+                if (value === expectedNumber) {
+                    showNextBlock(index);
+                } else {
+                    alert(`숫자 ${expectedNumber}를 입력해주세요.`);
                 }
             });
         }

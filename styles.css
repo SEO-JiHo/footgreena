@@ -77,16 +77,17 @@ h1 {
     position: relative;
     display: flex;
     padding: 15px;
-    align-items: center;
+    align-items: flex-start;
+    line-height: 1.5;
 }
 
 input[type="checkbox"] {
     display: inline-block;
 }
 
-.content {
+/* .content {
     display: none;
-}
+} */
 
 .block .locked {
     position: absolute;
@@ -113,16 +114,16 @@ input[type="checkbox"] {
     background: #efefef;
     border-radius: 15px;
     display: flex;
-    margin-top: 20px;
     margin: 20px auto 0;
     padding: 10px;
 }
 
 #name {
-    width: 100px;
+    width: 104px;
 }
 
 .button-container {
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -192,10 +193,6 @@ input[type="checkbox"] {
     h1 {
         font-size: calc(8px + 3vw);
     }
-}
-
-#block1 .content {
-    display: block;
 }
 
 .view .block .locked {
