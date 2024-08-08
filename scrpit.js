@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (value === expectedNumber) {
                     showNextBlock(index);
                 } else {
-                    alert(`숫자 ${expectedNumber}를 입력해주세요.`);
+                    alert('틀렸습니다. 다시 입력해주세요.');
                 }
             });
         }
