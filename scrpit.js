@@ -45,32 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // 마지막 폼 (카카오톡 아이디 입력) 처리
-        if (index === blocks.length - 1 && form) {
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // 기본 폼 제출 동작을 막음
-
-                const kakaoId = form.querySelector('input[name="kakaoId"]').value;
-
-                // 첫 번째 폼의 데이터와 함께 전송
-                const data = {
-                    name: userName,
-                    gender: userGender,
-                    kakaoId: kakaoId
-                };
-
-                fetch('welcome.html', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(data).toString()
-                }).then(() => {
-                    alert('데이터가 성공적으로 전송되었습니다.');
-                }).catch((error) => {
-                    alert(error);
-                });
-            });
-        }
-
         // 체크박스 상태를 감지하여 다음 블록의 콘텐츠를 표시
         if (checkbox) {
             checkbox.addEventListener('change', function () {
@@ -99,6 +73,35 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     alert('틀렸습니다. 다시 입력해주세요.');
                 }
+            });
+        }
+
+        // 마지막 폼 (카카오톡 아이디 입력) 처리
+        if (index === blocks.length - 1 && form) {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // 기본 폼 제출 동작을 막음
+    
+                const kakaoId = form.querySelector('input[name="kakaoId"]').value;
+    
+                // 첫 번째 폼의 데이터와 함께 전송
+                const data = {
+                    name: userName,
+                    gender: userGender,
+                    kakaoId: kakaoId
+                };
+    
+                fetch('welcome.html', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(data).toString()
+                }).then(() => {
+                    if (submitButton) {
+                        submitButton.disabled = true; // 확인 버튼 비활성화
+                    }
+                    alert('데이터가 성공적으로 전송되었습니다.');
+                }).catch((error) => {
+                    alert(error);
+                });
             });
         }
 
@@ -135,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
             popup.style.display = 'block';
         });
     }
-
+    
     if (closePopup) {
         closePopup.addEventListener('click', function () {
             popup.style.display = 'none';
