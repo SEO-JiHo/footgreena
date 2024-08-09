@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 userName = form.querySelector('input[name="name"]').value;
                 userGender = form.querySelector('input[name="gender"]:checked').value;
 
-                fetch('/', {
+                fetch('welcome.html', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams(new FormData(event.target)).toString()
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     kakaoId: kakaoId
                 };
 
-                fetch('/', {
+                fetch('welcome.html', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams(data).toString()
