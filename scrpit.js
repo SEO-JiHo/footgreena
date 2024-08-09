@@ -22,26 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (index === 0 && form) {
             form.addEventListener('submit', function (event) {
                 event.preventDefault(); // 기본 폼 제출 동작을 막음
-
+        
+                // 폼에서 이름과 성별을 추출하여 전역 변수에 저장
                 userName = form.querySelector('input[name="name"]').value;
                 userGender = form.querySelector('input[name="gender"]:checked').value;
-
-                fetch('welcome.html', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(new FormData(event.target)).toString()
-                }).then(() => {
-                    if (checkbox) {
-                        checkbox.checked = true;
-                        checkbox.dispatchEvent(new Event('change'));
-                    }
-                    if (submitButton) {
-                        submitButton.disabled = true; // 확인 버튼 비활성화
-                    }
-                    showNextBlock(index);
-                }).catch((error) => {
-                    alert(error);
-                });
+        
+                // 다음 블록으로 이동
+                showNextBlock(index);
             });
         }
 
