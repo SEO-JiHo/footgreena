@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const form = block.querySelector('form');
         const numberInput = block.querySelector('input[type="text"]');
         const numberButton = block.querySelector('button[type="button"]');
+        const linkButtons = block.querySelectorAll('.link-button');
 
         // 첫 번째 블록은 초기 상태에서 보이도록 설정
         if (index === 0) {
@@ -68,10 +69,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (numberInput && numberButton) {
             numberButton.addEventListener('click', function () {
                 const value = numberInput.value;
-                const expectedNumber = index === 1 ? '2' : index === 2 ? '10' : ''; // 예시: 각 블록에서 요구하는 숫자
+                const expectedNumber = index === 1 ? '2' : '';
 
                 if (value === expectedNumber) {
                     showNextBlock(index);
+                    numberButton.disabled = true;
                 } else {
                     alert('틀렸습니다. 다시 입력해주세요.');
                 }

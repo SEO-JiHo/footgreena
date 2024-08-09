@@ -13,35 +13,37 @@
             <img src="images/logo.png" width="20%">
             <div class="block-reveal" style="--bc: #3dcbff; --d: .1s">풋그리나에 오신 것을</div>
             <div class="block-reveal" style="--bc: #7c009b; --d: .5s">환영합니다! <i class="fa-regular fa-futbol"></i></div>
-            <div class="fade-in">아래 안내 사항을 끝까지 읽어주세요</div>
+            <div class="fade-in">아래 안내 사항을 끝까지 읽어주세요.</div>
         </h1>
 
         <div class="view">
             <div class="block" id="block1">
                 <div class="content">
                     <h3>정보 확인</h3>
-                    <p>소모임 가입 정보와 일치하는지 확인하기 위해 이름과 성별을 입력 후 확인 버튼을 눌러주세요.</p>
-                    <div class="block-in">
-                        <form name="user-data" method="POST" data-netlify="true">
-                            <p>
-                                <label for="name">이름: <input type="text" name="name" id="name" required /></label>
-                            </p>
-                            <p>
-                                <label>성별:
-                                    <input type="radio" name="gender" value="male" required /> 남자
-                                </label>
-                                <label>
-                                    <input type="radio" name="gender" value="female" required /> 여자
-                                </label>
-                            </p>
-                            <p class="button-container">
-                                <button type="submit" class="btn">확인</button>
-                            </p>
-                        </form>
+                    <p>소모임 가입 정보와 일치하는지 확인하기 위해 이름과 성별을 입력해주세요.</p>
+                    <div class="block-in-container">
+                        <div class="block-in">
+                            <form name="user-data" method="POST" data-netlify="true">
+                                <p>
+                                    <label for="name">이름: <input type="text" name="name" id="name" required /></label>
+                                </p>
+                                <p>
+                                    <label>성별:
+                                        <input type="radio" name="gender" value="male" required /> 남자
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="gender" value="female" required /> 여자
+                                    </label>
+                                </p>
+                                <p class="button-container">
+                                    <button type="submit" class="btn">확인</button>
+                                </p>
+                            </form>
+                        </div>
+                        <label style="display: none;">
+                            <input type="checkbox" id="check1" />
+                        </label>
                     </div>
-                    <label style="display: none;">
-                        <input type="checkbox" id="check1" />
-                    </label>
                 </div>
             </div>
             
@@ -51,33 +53,37 @@
                     <ul style="padding-left: 20px;">
                         <li>풋살 경기(정기모임)는 매주 월, 목요일 20~22시, 일요일 10~12시에 진행됩니다.</li>
                         <li>경기 참여는 소모임 앱을 통해 <b>선착순</b>으로 이루어집니다.</li>
-                        <li>만석일 경우 <b>경기 이틀 전부터</b> 대기자 명단 요청을 해주시면 게시글을 작성해 드리겠습니다. 대기자 명단에 댓글을 등록하시면 취소 인원 발생 시 순서대로 입장 가능합니다.</li>
+                        <li>만석일 경우 <b>경기 이틀 전부터</b> 카톡 대화방, 신문고방을 통해 대기자 명단 요청을 해주시면 게시글을 작성해 드리겠습니다. 대기자 명단에 댓글을 등록하시면 취소 인원 발생 시 순서대로 입장 가능합니다.</li>
                     </ul>
-                    <div class="block-in">
-                        <b>대기 명단 요청은</b>
-                        <input type="text" placeholder="숫자 입력" />
-                        <b>일 전부터 가능하다.</b>
-                        <button type="button" class="button-container">확인</button>
+                    <div class="block-in-container">
+                        <div class="block-in">
+                            <p>
+                                대기 명단 요청은
+                                <input type="text" class="numbox" placeholder="?" />
+                                일 전부터 가능하다.
+                            </p>
+                            <p class="button-container">
+                                <button type="button" class="btn">확인</button>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <i class="fas fa-lock locked"></i>
                 <i class="fas fa-unlock unlocked"></i>
             </div>
             
-
             <div class="block" id="block3">
                 <div class="content">
                     <h3>준비물 및 경기 당일 안내</h3>
                     <ul style="padding-left: 20px;">
                         <li>풋살화, 음료, 팀조끼는 <b>개별 지참</b>해 주시기 바랍니다. 조끼 색상은 형광노란색 혹은 형광분홍색 가능합니다.</li>
-                        <li><b>경기 시작 10분 전까지</b> 구장에 모여주시기 바랍니다. 준비 운동과 팀 나누기에 시간이 소요되므로, 10분 전까지 참여하지 않으시면 지각으로 간주됩니다.</li>
-                        <li></li>
+                        <li><b>경기 시작 10분 전까지</b> 구장에 모여주시기 바랍니다. 준비 운동과 팀 나누기에 시간이 소요되므로, 10분 전까지 참여하지 않으면 지각으로 간주됩니다.</li>
+                        <li>정시에 참석하기 어려운 경우, 반드시 다른 참석자분들께 양해를 구해 주시기 바랍니다. 지각이 누적될 경우, 경고나 퇴출 조치가 있을 수 있습니다.</li>
                     </ul>
                     <label>
                         <div class="button-container">
-                            <input type="text" id="inputNumber2" placeholder="숫자 입력" />
-                            <button type="button" id="submitNumber2">확인</button>
-
+                            <input type="checkbox"" />
+                            위 내용을 확인했습니다.
                         </div>
                     </label>
                 </div>
@@ -87,11 +93,16 @@
 
             <div class="block" id="block4">
                 <div class="content">
-                    <p>Content of Block 4</p>
+                    <h3>경기 참석 및 취소</h3>
+                    <ul style="padding-left: 20px;">
+                        <li>경기 <b>전날~당일</b>에 경기 참석을 취소할 경우, 다른 멤버들이 알 수 있도록 단체톡방에 취소했다고 말씀 부탁드립니다.</li>
+                        <li>경기 <b>직전</b>에 참여할 경우에도 단체톡방에 말씀 부탁드립니다. 경기 시작 후 사전에 합의되지 않은 <b>중도 참여는 불가</b>합니다.</li>
+                        <li>기상 악화가 예보된 경우, 참석자들끼리 경기 진행 여부를 상의하시고, 참석 여부는 자유롭게 결정하시면 됩니다.</li>
+                    </ul>
                     <label>
                         <div class="button-container">
-                            <input type="checkbox" id="check4" />
-                        위 내용을 확인했습니다.
+                            <input type="checkbox" />
+                            위 내용을 확인했습니다.
                         </div>
                     </label>
                 </div>
@@ -101,10 +112,24 @@
 
             <div class="block" id="block5">
                 <div class="content">
-                    <p>Content of Block 5</p>
+                    <h3>소통 및 문의</h3>
+                    <div class="block-in-container">
+                        <div class="block-in">
+                            <a href="https://open.kakao.com/o/g1sCUT8d" target="_blank">공지방 입장</a>
+                            <a href="https://open.kakao.com/o/gomQsvje" target="_blank">대화방 입장</a>
+                            <a href="https://open.kakao.com/o/gg3qXoZf" target="_blank">신문고방 입장</a>
+                        </div>
+                    </div>
+                    <ul style="padding-left: 20px;">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                     <label>
-                        <input type="checkbox" id="check5" />
-                        위 내용을 확인했습니다.
+                        <div class="button-container">
+                            <input type="checkbox" />
+                            위 내용을 확인했습니다.
+                        </div>
                     </label>
                 </div>
                 <i class="fas fa-lock locked"></i>
