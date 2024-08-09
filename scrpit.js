@@ -64,17 +64,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 마지막 폼 (카카오톡 아이디 입력) 처리
-        if (index === blocks.length - 1 && form) {
+        if (index === 6 && form) {
             form.addEventListener('submit', function (event) {
                 event.preventDefault(); // 기본 폼 제출 동작을 막음
     
-                const kakaoId = form.querySelector('input[name="kakaoId"]').value;
+                const userkakaoId = form.querySelector('input[name="kakaoId"]').value;
     
                 // 첫 번째 폼의 데이터와 함께 전송
                 const data = {
                     name: userName,
                     gender: userGender,
-                    kakaoId: kakaoId
+                    kakaoId: userkakaoId
                 };
     
                 fetch('welcome.html', {
