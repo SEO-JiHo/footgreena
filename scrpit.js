@@ -68,19 +68,18 @@ document.addEventListener('DOMContentLoaded', function () {
             form.addEventListener('submit', function (event) {
                 event.preventDefault(); // 기본 폼 제출 동작을 막음
     
-                const userkakaoId = form.querySelector('input[name="kakaoId"]').value;
+                const userKakaoId = form.querySelector('input[name="kakaoId"]').value;
     
-                // 첫 번째 폼의 데이터와 함께 전송
-                const data = {
-                    name: userName,
-                    gender: userGender,
-                    kakaoId: userkakaoId
-                };
+                // 새로운 FormData 객체 생성
+                const formData = new FormData();
+                formData.append('name', userName);
+                formData.append('gender', userGender);
+                formData.append('kakaoId', userKakaoId);
     
                 fetch('welcome.html', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(data).toString()
+                    body: new URLSearchParams(formData).toString()
                 }).then(() => {
                     if (submitButton) {
                         submitButton.disabled = true; // 확인 버튼 비활성화
