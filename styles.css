@@ -85,9 +85,9 @@ input[type="checkbox"] {
     display: inline-block;
 }
 
-/* .content {
+.content {
     display: none;
-} */
+}
 
 .block .locked {
     position: absolute;
@@ -118,7 +118,7 @@ input[type="checkbox"] {
     width: auto;
     background: #f5f5f5;
     border-radius: 15px;
-    margin: 20px auto 0;
+    margin: 5px auto 10px;
     padding: 10px;
     font-weight: 600;
 
@@ -146,13 +146,74 @@ input[type="checkbox"] {
 }
 
 .numbox {
-    width: 20px;
+    width: 15px;
 }
 
 a:link {
     color: #2b84d2;
     text-decoration: none;
-    margin: 15px;
+    margin: 10px;
+}
+
+a:visited {
+    color: #2b84d2;
+    text-decoration: none;
+    margin: 10px;
+
+}
+
+.link-click {
+    font-size: 12px;
+    color: #a0a0a0;
+    margin: 5px 0 -5px 0;
+}
+
+.img-field {
+    width: 50%;
+    margin: -30px 0 0 0;
+}
+
+#kakaoId {
+    width: 120px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(68, 68, 68, 0.8);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    width: 80%;
+}
+
+.popup-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.close {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ccc;
+}
+
+#open-popup {
+    color: #2b84d2;
 }
 
 @keyframes revealBlock {
