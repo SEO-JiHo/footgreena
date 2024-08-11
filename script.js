@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 첫 번째 폼 (이름과 성별 입력) 처리
         if (index === 0 && form) {
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // 기본 폼 제출 동작을 막음
+            form.addEventListener('submit', function (event1) {
+                event1.preventDefault(); // 기본 폼 제출 동작을 막음
         
                 // 폼에서 이름과 성별을 추출하여 전역 변수에 저장
                 userName = form.querySelector('input[name="name"]').value;
@@ -39,17 +39,17 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // 마지막 폼 (카카오톡 아이디 입력) 처리
         if (index === 6 && form) {
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // 기본 폼 제출 동작을 막음
+            form.addEventListener('submit', function (event2) {
+                event2.preventDefault(); // 기본 폼 제출 동작을 막음
         
                 const userKakaoId = form.querySelector('input[name="kakaoId"]').value;
         
                 // 새로운 FormData 객체 생성
-                const myForm = event.target
+                const myForm = event2.target
                 const formData = new FormData(myForm);
                 formData.append('name', userName);
                 formData.append('gender', userGender);
-                formData.append('kakaoId', userKakaoId);
+                // formData.append('kakaoId', userKakaoId);
         
                 fetch('/', {
                     method: 'POST',
