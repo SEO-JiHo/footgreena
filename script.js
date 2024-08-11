@@ -45,15 +45,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 const userKakaoId = form.querySelector('input[name="kakaoId"]').value;
         
                 // 새로운 FormData 객체 생성
-                const formData = new FormData();
+                const myForm = event2.target
+                const formData = new FormData(myForm);
                 formData.append('name', userName);
                 formData.append('gender', userGender);
-                formData.append('kakaoId', userKakaoId);
-        
+                
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                    console.log(myForm);
+                }
+
                 fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: formData
+                    body: new URLSearchParams(formData).toString()
                 }).then(response => {
                     if (response.ok) {
                         // 제출 성공 후 처리
