@@ -45,7 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 const userKakaoId = form.querySelector('input[name="kakaoId"]').value;
         
                 // 새로운 FormData 객체 생성
-                const formData = new FormData();
+                const myForm = event.target
+                const formData = new FormData(myForm);
                 formData.append('name', userName);
                 formData.append('gender', userGender);
                 formData.append('kakaoId', userKakaoId);
