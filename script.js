@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const form = block.querySelector('form');
         const numberInput = block.querySelector('input[type="text"]');
         const numberButton = block.querySelector('button[type="button"]');
-        const submitButton = block.querySelector('#submit-button');
+        const submitButton1 = block.querySelector('#submit-button-1');
+        const submitButton2 = block.querySelector('#submit-button-2');
 
         // 첫 번째 블록은 초기 상태에서 보이도록 설정
         if (index === 0) {
@@ -26,9 +27,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 // 폼에서 이름과 성별을 추출하여 전역 변수에 저장
                 userName = form.querySelector('input[name="name"]').value;
                 userGender = form.querySelector('input[name="gender"]:checked').value;
-        
+                
+                if (submitButton1) {
+                    submitButton1.disabled = true;
+                }
+
                 // 다음 블록으로 이동
                 showNextBlock(index);
+            });
+        }
+        
+        // 마지막 폼 (카카오톡 아이디 입력) 처리
+        if (index === 6 && form) {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // 기본 폼 제출 동작을 막음
+        
+                const userKakaoId = form.querySelector('input[name="kakaoId"]').value;
+        
+                // 새로운 FormData 객체 생성
+                const formData = new FormData();
+                formData.append('name', userName);
+                formData.append('gender', userGender);
+                formData.append('kakaoId', userKakaoId);
+        
+                fetch('welcome.html', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                }).then(response => {
+                    if (response.ok) {
+                        // 제출 성공 후 처리
+                        if (submitButton2) {
+                            submitButton2.disabled = true;
+                        }
+                        alert('데이터가 성공적으로 전송되었습니다.\n즐겁고 안전한 풋살되시기 바랍니다!');
+                    } else {
+                        // 제출 실패 시 처리
+                        alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+                    }
+                }).catch(error => {
+                    alert('데이터 전송 중 오류가 발생했습니다: ' + error.message);
+                });
             });
         }
 
@@ -63,38 +102,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // 마지막 폼 (카카오톡 아이디 입력) 처리
-        if (index === 6 && form) {
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // 기본 폼 제출 동작을 막음
-    
-                const userKakaoId = form.querySelector('input[name="kakaoId"]').value;
-    
-                // 새로운 FormData 객체 생성
-                const formData = new FormData();
-                formData.append('name', userName);
-                formData.append('gender', userGender);
-                formData.append('kakaoId', userKakaoId);
-    
-                fetch('welcome.html', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(formData).toString()
-                }).then(() => {
-                    if (submitButton) {
-                        submitButton.disabled = true; // 확인 버튼 비활성화
-                    }
-                    alert('데이터가 성공적으로 전송되었습니다.');
-                }).catch((error) => {
-                    alert(error);
-                });
-            });
-        }
-
         function showNextBlock(currentIndex) {
             const nextBlock = blocks[currentIndex + 1];
             if (nextBlock) {
-                const nextCheckbox = nextBlock.querySelector('input[type="checkbox"]');
                 const nextContent = nextBlock.querySelector('.content');
                 const nextLockedIcon = nextBlock.querySelector('.locked');
                 const nextUnlockedIcon = nextBlock.querySelector('.unlocked');
