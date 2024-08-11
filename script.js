@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 formData.append('gender', userGender);
                 formData.append('kakaoId', userKakaoId);
         
-                fetch('https://footgreena.netlify.app/', {
+                fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams(formData).toString()
