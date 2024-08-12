@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const formData = new FormData();
                 formData.append('name', userName);
                 formData.append('gender', userGender);
-                formData.append('kakaoId', userKakaoId);
+                // formData.append('kakaoId', userKakaoId);
 
                 fetch('/', {
                     method: 'POST',
