@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 // 새로운 FormData 객체 생성
                 const myForm = event.target.form;
                 const formData = new FormData(myForm);
-                // formData.append('name', userName);
-                // formData.append('gender', userGender);
+                formData.append('name', userName);
+                formData.append('gender', userGender);
 
                 fetch('/', {
                     method: 'POST',
