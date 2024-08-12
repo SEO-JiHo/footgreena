@@ -3,14 +3,34 @@ document.addEventListener('DOMContentLoaded', function () {
     let userName = '';
     let userGender = '';
 
+    function showNextBlock(currentIndex) {
+        const nextBlock = blocks[currentIndex + 1];
+        if (nextBlock) {
+            const nextContent = nextBlock.querySelector('.content');
+            const nextLockedIcon = nextBlock.querySelector('.locked');
+            const nextUnlockedIcon = nextBlock.querySelector('.unlocked');
+
+            if (nextLockedIcon && nextUnlockedIcon) {
+                nextLockedIcon.style.display = 'none';
+                nextUnlockedIcon.style.display = 'block';
+
+                setTimeout(() => {
+                    nextUnlockedIcon.style.display = 'none';
+                    nextContent.style.display = 'block';
+                }, 800);
+            } else {
+                nextContent.style.display = 'block';
+            }
+        }
+    }
+
     blocks.forEach((block, index) => {
         const checkbox = block.querySelector('input[type="checkbox"]');
         const content = block.querySelector('.content');
         const lockedIcon = block.querySelector('.locked');
         const unlockedIcon = block.querySelector('.unlocked');
-        const form = block.querySelector('form');
         const numberInput = block.querySelector('input[type="text"]');
-        const numberButton = block.querySelector('button[type="button"]');
+        const numberButton = block.querySelector('#num-button');
         const submitButton1 = block.querySelector('#submit-button-1');
         const submitButton2 = block.querySelector('#submit-button-2');
 
@@ -20,40 +40,40 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 첫 번째 폼 (이름과 성별 입력) 처리
-        if (index === 0 && form) {
-            form.addEventListener('submit', function (event1) {
-                event1.preventDefault(); // 기본 폼 제출 동작을 막음
-        
-                // 폼에서 이름과 성별을 추출하여 전역 변수에 저장
-                userName = form.querySelector('input[name="name"]').value;
-                userGender = form.querySelector('input[name="gender"]:checked').value;
+        if (index === 0 && submitButton1) {
+            submitButton1.addEventListener('click', function () {
+                // 이름과 성별을 전역 변수에 저장
+                userName = block.querySelector('input[name="name"]').value;
+                const genderInput = block.querySelector('input[name="gender"]:checked');
                 
-                if (submitButton1) {
-                    submitButton1.disabled = true;
+                if (userName && genderInput) {
+                    userGender = genderInput.value;
+                    submitButton1.disabled = true;  // 버튼 비활성화
+                    alert(`이름: ${userName}, 성별: ${userGender} 저장되었습니다.`);
+                    showNextBlock(index);  // 다음 블록으로 이동
+                } else {
+                    alert("이름과 성별을 모두 입력해주세요.");
                 }
-
-                // 다음 블록으로 이동
-                showNextBlock(index);
             });
         }
-        
+
         // 마지막 폼 (카카오톡 아이디 입력) 처리
-        if (index === 6 && form) {
-            form.addEventListener('submit', function (event2) {
-                event2.preventDefault(); // 기본 폼 제출 동작을 막음
+        if (index === 6 && submitButton2) {
+            submitButton2.addEventListener('click', function (event) {
+                event.preventDefault(); // 기본 폼 제출 동작을 막음
         
-                const userKakaoId = form.querySelector('input[name="kakaoId"]').value;
-        
-                // 새로운 FormData 객체 생성
-                const myForm = event2.target
-                const formData = new FormData(myForm);
-                formData.append('name', userName);
-                formData.append('gender', userGender);
-                
-                for (let [key, value] of formData.entries()) {
-                    console.log(`${key}: ${value}`);
-                    console.log(myForm);
+                const userKakaoId = block.querySelector('input[name="kakaoId"]').value;
+
+                if (!userKakaoId) {
+                    alert("카카오 ID를 입력해주세요.");
+                    return;
                 }
+
+                // 새로운 FormData 객체 생성
+                const myForm = event.target.form;
+                const formData = new FormData(myForm);
+                // formData.append('name', userName);
+                // formData.append('gender', userGender);
 
                 fetch('/', {
                     method: 'POST',
@@ -61,13 +81,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: new URLSearchParams(formData).toString()
                 }).then(response => {
                     if (response.ok) {
-                        // 제출 성공 후 처리
-                        if (submitButton2) {
-                            submitButton2.disabled = true;
-                        }
+                        submitButton2.disabled = true;
                         alert('데이터가 성공적으로 전송되었습니다.\n즐겁고 안전한 풋살되시기 바랍니다!');
                     } else {
-                        // 제출 실패 시 처리
                         alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
                     }
                 }).catch(error => {
@@ -105,27 +121,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert('틀렸습니다. 다시 입력해주세요.');
                 }
             });
-        }
-
-        function showNextBlock(currentIndex) {
-            const nextBlock = blocks[currentIndex + 1];
-            if (nextBlock) {
-                const nextContent = nextBlock.querySelector('.content');
-                const nextLockedIcon = nextBlock.querySelector('.locked');
-                const nextUnlockedIcon = nextBlock.querySelector('.unlocked');
-
-                if (nextLockedIcon && nextUnlockedIcon) {
-                    nextLockedIcon.style.display = 'none';
-                    nextUnlockedIcon.style.display = 'block';
-
-                    setTimeout(() => {
-                        nextUnlockedIcon.style.display = 'none';
-                        nextContent.style.display = 'block';
-                    }, 800);
-                } else {
-                    nextContent.style.display = 'block';
-                }
-            }
         }
     });
 
