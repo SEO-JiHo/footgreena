@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const content = block.querySelector('.content');
         const lockedIcon = block.querySelector('.locked');
         const unlockedIcon = block.querySelector('.unlocked');
-        const numberInput = block.querySelector('input[type="text"]');
-        const numberButton = block.querySelector('#num-button');
         const submitButton1 = block.querySelector('#submit-button-1');
         const submitButton2 = block.querySelector('#submit-button-2');
+        const numberInput = block.querySelector('#num-input');
+        const numberButton = block.querySelector('#num-button');
 
         // 첫 번째 블록은 초기 상태에서 보이도록 설정
         if (index === 0) {
@@ -57,6 +57,20 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
+        if (numberInput && numberButton) {
+            numberButton.addEventListener('click', function () {
+                const value = numberInput.value;
+                const expectedNumber = index === 1 ? '2' : '';
+                if (value === expectedNumber) {
+                    showNextBlock(index);
+                    numberButton.disabled = true;
+                } else {
+                    alert('틀렸습니다. 다시 입력해주세요.');
+                }
+            });
+        }
+
+
         // 마지막 폼 (카카오톡 아이디 입력) 처리
         if (index === 6 && submitButton2) {
             submitButton2.addEventListener('click', function (event) {
@@ -70,10 +84,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // 새로운 FormData 객체 생성
-                const myForm = event.target.form;
-                const formData = new FormData(myForm);
+                const formData = new FormData();
                 formData.append('name', userName);
                 formData.append('gender', userGender);
+                formData.append('kakaoId', userKakaoId); // 카카오 아이디 추가
 
                 fetch('/', {
                     method: 'POST',
@@ -105,20 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (lockedIcon) {
                         lockedIcon.style.display = 'block';
                     }
-                }
-            });
-        }
-
-        if (numberInput && numberButton) {
-            numberButton.addEventListener('click', function () {
-                const value = numberInput.value;
-                const expectedNumber = index === 1 ? '2' : '';
-
-                if (value === expectedNumber) {
-                    showNextBlock(index);
-                    numberButton.disabled = true;
-                } else {
-                    alert('틀렸습니다. 다시 입력해주세요.');
                 }
             });
         }
