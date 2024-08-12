@@ -31,16 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const unlockedIcon = block.querySelector('.unlocked');
         const submitButton1 = block.querySelector('#submit-button-1');
         const submitButton2 = block.querySelector('#submit-button-2');
-        const numberInput = block.querySelector('#num-input');
-        const numberButton = block.querySelector('#num-button');
 
-        // 첫 번째 블록은 초기 상태에서 보이도록 설정
-        if (index === 0) {
-            content.style.display = 'block';
-        }
 
         // 첫 번째 폼 (이름과 성별 입력) 처리
-        if (index === 0 && submitButton1) {
+        if (index === 0) {
+            content.style.display = 'block';
             submitButton1.addEventListener('click', function () {
                 // 이름과 성별을 전역 변수에 저장
                 userName = block.querySelector('input[name="name"]').value;
@@ -57,7 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        if (numberInput && numberButton) {
+        // 두 번째 폼 (숫자 입력) 처리
+        if (index === 1) {
+            const numberInput = block.querySelector('#num-input');
+            const numberButton = block.querySelector('#num-button');
             numberButton.addEventListener('click', function () {
                 const value = numberInput.value;
                 const expectedNumber = index === 1 ? '2' : '';
@@ -72,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // 마지막 폼 (카카오톡 아이디 입력) 처리
-        if (index === 6 && submitButton2) {
+        if (index === 6) {
             submitButton2.addEventListener('click', function (event) {
                 event.preventDefault(); // 기본 폼 제출 동작을 막음
         
@@ -87,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const formData = new FormData();
                 formData.append('name', userName);
                 formData.append('gender', userGender);
-                formData.append('kakaoId', userKakaoId); // 카카오 아이디 추가
+                formData.append('kakaoId', userKakaoId);
 
                 fetch('/', {
                     method: 'POST',
