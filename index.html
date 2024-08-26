@@ -17,13 +17,13 @@
         </h1>
 
         <div class="view">
-            <div class="block" id="block1">
-                <div class="content">
-                    <h3>Welcome !</h3>
-                    <p>소모임 가입 정보와 일치하는지 확인하기 위해 이름과 성별을 입력해주세요.</p>
-                    <div class="block-in-container">
-                        <div class="block-in">
-                            <form name="user-data" method="POST" data-netlify="true">
+            <form name="user-data" method="POST" data-netlify="true">
+                <div class="block" id="block1">
+                    <div class="content">
+                        <h3>Welcome !</h3>
+                        <p>소모임 가입 정보와 일치하는지 확인하기 위해 이름과 성별을 입력해주세요.</p>
+                        <div class="block-in-container">
+                            <div class="block-in">
                                 <p>
                                     <label for="name">이름: <input type="text" name="name" id="name" required /></label>
                                 </p>
@@ -36,167 +36,164 @@
                                     </label>
                                 </p>
                                 <p class="button-container">
-                                    <button type="submit" class="btn" id="submit-button-1">확인</button>
+                                    <button type="button" class="btn" id="submit-button-1">확인</button>
                                 </p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="block" id="block2">        
-                <div class="content">
-                    <h3>운동 요일 및 경기 참석 방법</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>풋살 경기(정기모임)는 매주 월, 목요일 20~22시, 일요일 10~12시에 진행됩니다.</li>
-                        <li>경기 참여는 소모임 앱을 통해 <b>선착순</b>으로 이루어집니다.</li>
-                        <li>만석일 경우 <b>경기 이틀 전부터</b> 카톡 대화방, 신문고방을 통해 대기자 명단 요청을 해주시면 게시글을 작성해 드리겠습니다. 대기자 명단에 댓글을 등록하시면 취소 인원 발생 시 순서대로 입장 가능합니다.</li>
-                    </ul>
-                    <div class="block-in-container">
-                        <div class="block-in">
-                            <p>
-                                대기 명단 요청은
-                                <input type="text" class="numbox" id="num-input" placeholder="?" />
-                                일 전부터 가능하다.
-                            </p>
-                            <div class="link-click">숫자를 입력해주세요.</div>
-                            <p class="button-container">
-                                <button type="button" class="btn" id="num-button">확인</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <i class="fas fa-lock locked"></i>
-                <i class="fas fa-unlock unlocked"></i>
-            </div>
-            
-            <div class="block" id="block3">
-                <div class="content">
-                    <h3>준비물 및 경기 당일 안내</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>풋살화, 음료, 팀조끼는 <b>개별 지참</b>해 주시기 바랍니다. 조끼 색상은 형광노란색 혹은 형광분홍색 가능합니다.</li>
-                        <li><b>경기 시작 10분 전까지</b> 구장에 모여주시기 바랍니다. 준비 운동과 팀 나누기에 시간이 소요되므로, 10분 전까지 참여하지 않으면 지각으로 간주됩니다.</li>
-                        <li>정시에 참석하기 어려운 경우, 반드시 다른 참석자분들께 양해를 구해 주시기 바랍니다. 지각이 누적될 경우, 경고나 퇴출 조치가 있을 수 있습니다.</li>
-                    </ul>
-                    <label>
-                        <div class="block-in-container">
-                            <div class="block-in">
-                                <input type="checkbox" />
-                                위 내용을 확인했습니다.
                             </div>
                         </div>
-                    </label>
+                    </div>
                 </div>
-                <i class="fas fa-lock locked"></i>
-                <i class="fas fa-unlock unlocked"></i>
-            </div>
-
-            <div class="block" id="block4">
-                <div class="content">
-                    <h3>경기 중 유의사항</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>혼성 경기인 만큼 <b>몸싸움은 지양</b>합니다.</li>
-                        <li><b>무엇보다 중요한 것은 멤버들과의 조화입니다.</b> 입문자분들도 즐길 수 있도록 배려하는 분위기를 함께 만들어 주세요.</li>
-                        <li><b>남성분들</b>은 패널티 에어리어 안에서만 인사이드 슈팅이 가능합니다.</li>
-                    </ul>
-                    <label>
-                        <div class="button-container">
-                            <img src="images/field.jpg" class="img-field">
+                
+                <div class="block" id="block2">        
+                    <div class="content">
+                        <h3>운동 요일 및 경기 참석 방법</h3>
+                        <ul style="padding-left: 20px;">
+                            <li>풋살 경기(정기모임)는 매주 월, 목요일 20~22시, 일요일 10~12시에 진행됩니다.</li>
+                            <li>경기 참여는 소모임 앱을 통해 <b>선착순</b>으로 이루어집니다.</li>
+                            <li>만석일 경우 <b>경기 이틀 전부터</b> 카톡 대화방, 신문고방을 통해 대기자 명단 요청을 해주시면 게시글을 작성해 드리겠습니다. 대기자 명단에 댓글을 등록하시면 취소 인원 발생 시 순서대로 입장 가능합니다.</li>
+                        </ul>
+                        <div class="block-in-container">
+                            <div class="block-in">
+                                <p>
+                                    대기 명단 요청은
+                                    <input type="text" class="numbox" id="num-input" placeholder="?" />
+                                    일 전부터 가능하다.
+                                </p>
+                                <div class="link-click">숫자를 입력해주세요.</div>
+                                <p class="button-container">
+                                    <button type="button" class="btn" id="num-button">확인</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="fas fa-lock locked"></i>
+                    <i class="fas fa-unlock unlocked"></i>
+                </div>
+                
+                <div class="block" id="block3">
+                    <div class="content">
+                        <h3>준비물 및 경기 당일 안내</h3>
+                        <ul style="padding-left: 20px;">
+                            <li>풋살화, 음료, 팀조끼는 <b>개별 지참</b>해 주시기 바랍니다. 조끼 색상은 형광노란색 혹은 형광분홍색 가능합니다.</li>
+                            <li><b>경기 시작 10분 전까지</b> 구장에 모여주시기 바랍니다. 준비 운동과 팀 나누기에 시간이 소요되므로, 10분 전까지 참여하지 않으면 지각으로 간주됩니다.</li>
+                            <li>정시에 참석하기 어려운 경우, 반드시 다른 참석자분들께 양해를 구해 주시기 바랍니다. 지각이 누적될 경우, 경고나 퇴출 조치가 있을 수 있습니다.</li>
+                        </ul>
+                        <label>
                             <div class="block-in-container">
                                 <div class="block-in">
                                     <input type="checkbox" />
                                     위 내용을 확인했습니다.
                                 </div>
                             </div>
-                        </div>
-                    </label>
-                </div>
-                <i class="fas fa-lock locked"></i>
-                <i class="fas fa-unlock unlocked"></i>
-            </div>
-
-            <div class="block" id="block5">
-                <div class="content">
-                    <h3>경기 참석 및 취소</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>한 달에 두 번 이상 참석해주세요. 참석률이 저조한 경우 퇴출 조치가 있을 수 있습니다.</li>
-                        <li>경기 <b>전날~당일</b>에 경기 참석을 취소할 경우, 다른 멤버들이 알 수 있도록 단체톡방에 취소했다고 말씀 부탁드립니다.</li>
-                        <li>경기 <b>직전</b>에 참여할 경우에도 단체톡방에 말씀 부탁드립니다. 경기 시작 후 사전에 합의되지 않은 <b>중도 참여는 불가</b>합니다.</li>
-                        <li>기상 악화가 예보된 경우, 참석자분들끼리 경기 진행 여부를 상의하시고, 참석 여부는 자유롭게 결정하시면 됩니다.</li>
-                    </ul>
-                    <label>
-                        <div class="block-in-container">
-                            <div class="block-in">
-                                <input type="checkbox" />
-                                위 내용을 확인했습니다.
-                            </div>
-                        </div>
-                    </label>
-                </div>
-                <i class="fas fa-lock locked"></i>
-                <i class="fas fa-unlock unlocked"></i>
-            </div>
-
-            <div class="block" id="block6">
-                <div class="content">
-                    <h3>소통 및 문의</h3>
-                    <div class="block-in-container">
-                        <div class="block-in">
-                            <a href="https://open.kakao.com/o/g1sCUT8d" target="_blank" rel="noopener noreferrer">공지방</a>
-                            <a href="https://open.kakao.com/o/gomQsvje" target="_blank" rel="noopener noreferrer">대화방</a>
-                            <a href="https://open.kakao.com/o/gg3qXoZf" target="_blank" rel="noopener noreferrer">신문고방</a>
-                            <div class="link-click">클릭하시면 해당 링크가 열립니다.</div>
-                        </div>
+                        </label>
                     </div>
-                    <ul style="padding-left: 20px;">
-                        <li>공지방은 필수로 입장해주세요.</li>
-                        <li>잡담이나 간단한 질문 등은 대화방에서 멤버분들과 편하게 나누시면 됩니다. 대화방 입장은 선택입니다.</li>
-                        <li>운영진에게 문의, 건의, 불만사항이 있으시면 신문고방에 입장하여 해결한 후 퇴장하시면 됩니다. 신문고방 링크는 공지방에서도 확인 가능합니다.</li>
-                    </ul>
-                    <label>
-                        <div class="button-container">
+                    <i class="fas fa-lock locked"></i>
+                    <i class="fas fa-unlock unlocked"></i>
+                </div>
+
+                <div class="block" id="block4">
+                    <div class="content">
+                        <h3>경기 중 유의사항</h3>
+                        <ul style="padding-left: 20px;">
+                            <li>혼성 경기인 만큼 <b>몸싸움은 지양</b>합니다.</li>
+                            <li><b>무엇보다 중요한 것은 멤버들과의 조화입니다.</b> 입문자분들도 즐길 수 있도록 배려하는 분위기를 함께 만들어 주세요.</li>
+                            <li><b>남성분들</b>은 패널티 에어리어 안에서만 인사이드 슈팅이 가능합니다.</li>
+                        </ul>
+                        <label>
+                            <div class="button-container">
+                                <img src="images/field.jpg" class="img-field">
+                                <div class="block-in-container">
+                                    <div class="block-in">
+                                        <input type="checkbox" />
+                                        위 내용을 확인했습니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <i class="fas fa-lock locked"></i>
+                    <i class="fas fa-unlock unlocked"></i>
+                </div>
+
+                <div class="block" id="block5">
+                    <div class="content">
+                        <h3>경기 참석 및 취소</h3>
+                        <ul style="padding-left: 20px;">
+                            <li>한 달에 두 번 이상 참석해주세요. 참석률이 저조한 경우 퇴출 조치가 있을 수 있습니다.</li>
+                            <li>경기 <b>전날~당일</b>에 경기 참석을 취소할 경우, 다른 멤버들이 알 수 있도록 단체톡방에 취소했다고 말씀 부탁드립니다.</li>
+                            <li>경기 <b>직전</b>에 참여할 경우에도 단체톡방에 말씀 부탁드립니다. 경기 시작 후 사전에 합의되지 않은 <b>중도 참여는 불가</b>합니다.</li>
+                            <li>기상 악화가 예보된 경우, 참석자분들끼리 경기 진행 여부를 상의하시고, 참석 여부는 자유롭게 결정하시면 됩니다.</li>
+                        </ul>
+                        <label>
                             <div class="block-in-container">
                                 <div class="block-in">
                                     <input type="checkbox" />
                                     위 내용을 확인했습니다.
                                 </div>
                             </div>
-                        </div>
-                    </label>
-                </div>
-                <i class="fas fa-lock locked"></i>
-                <i class="fas fa-unlock unlocked"></i>
-            </div>
-
-            <div class="block" id="block7">
-                <div class="content">
-                    <h3>Welcome Again !</h3>
-                    회비 납부 안내 및 비상 연락을 위한 카카오톡 아이디를 입력해주세요.<span id="open-popup"> [아이디를 어떻게 확인하는지 모르겠어요]</span>
-                    <div id="popup" class="popup">
-                        <span id="close-popup" class="close">&times;</span>
-                        <img src="images/popupimg.jpg" alt="Popup Image" class="popup-image">
-                        <span id="popup-text">카카오톡 친구 창 → 친구 추가 → 카카오톡 ID</span>
+                        </label>
                     </div>
-                    <form name="user-data" method="POST" data-netlify="true">
+                    <i class="fas fa-lock locked"></i>
+                    <i class="fas fa-unlock unlocked"></i>
+                </div>
+
+                <div class="block" id="block6">
+                    <div class="content">
+                        <h3>소통 및 문의</h3>
+                        <div class="block-in-container">
+                            <div class="block-in">
+                                <a href="https://open.kakao.com/o/g1sCUT8d" target="_blank" rel="noopener noreferrer">공지방</a>
+                                <a href="https://open.kakao.com/o/gomQsvje" target="_blank" rel="noopener noreferrer">대화방</a>
+                                <a href="https://open.kakao.com/o/gg3qXoZf" target="_blank" rel="noopener noreferrer">신문고방</a>
+                                <div class="link-click">클릭하시면 해당 링크가 열립니다.</div>
+                            </div>
+                        </div>
+                        <ul style="padding-left: 20px;">
+                            <li>공지방은 필수로 입장해주세요.</li>
+                            <li>잡담이나 간단한 질문 등은 대화방에서 멤버분들과 편하게 나누시면 됩니다. 대화방 입장은 선택입니다.</li>
+                            <li>운영진에게 문의, 건의, 불만사항이 있으시면 신문고방에 입장하여 해결한 후 퇴장하시면 됩니다. 신문고방 링크는 공지방에서도 확인 가능합니다.</li>
+                        </ul>
+                        <label>
+                            <div class="button-container">
+                                <div class="block-in-container">
+                                    <div class="block-in">
+                                        <input type="checkbox" />
+                                        위 내용을 확인했습니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <i class="fas fa-lock locked"></i>
+                    <i class="fas fa-unlock unlocked"></i>
+                </div>
+
+                <div class="block" id="block7">
+                    <div class="content">
+                        <h3>Welcome Again !</h3>
+                        회비 납부 안내 및 비상 연락을 위한 카카오톡 아이디를 입력해주세요.<span id="open-popup"> [아이디를 어떻게 확인하는지 모르겠어요]</span>
+                        <div id="popup" class="popup">
+                            <span id="close-popup" class="close">&times;</span>
+                            <img src="images/popupimg.jpg" alt="Popup Image" class="popup-image">
+                            <span id="popup-text">카카오톡 친구 창 → 친구 추가 → 카카오톡 ID</span>
+                        </div>
                         <div class="block-in-container">
                             <div class="block-in">
                                 <label for="kakaoId">kakao ID: 
-                                    <input type="text" name="kakaoId" required />
+                                    <input type="text" name="kakaoId" id="kakaoId" required />
                                 </label>
                                 <p class="button-container">
-                                    <button type="button" class="btn" id="submit-button-2">확인</button>
+                                    <button type="submit" class="btn" id="submit-button-2">확인</button>
                                 </p>
                             </div>
                         </div>
-                    </form>
-                    회비는 5,000원이며, 최초 1회 납부 후 회비 소진 시 재납부합니다. 연 1회 정도입니다.<br>
-                    운영진과 일부 멤버분들의 봉사와 희생 덕분에 회비가 저렴하게 유지되고 있습니다. 필요한 경우 도움을 주시면 모임 운영에 큰 도움이 됩니다.<br>
-                    <h3 style="text-align: center;">풋그리나에 오신 것을 다시 한 번 환영합니다!</h3>
+                        회비는 5,000원이며, 최초 1회 납부 후 회비 소진 시 재납부합니다. 연 1회 정도입니다.<br>
+                        운영진과 일부 멤버분들의 봉사와 희생 덕분에 회비가 저렴하게 유지되고 있습니다. 필요한 경우 도움을 주시면 모임 운영에 큰 도움이 됩니다.<br>
+                        <h3 style="text-align: center;">풋그리나에 오신 것을 다시 한 번 환영합니다!</h3>
+                    </div>
+                    <i class="fas fa-lock locked"></i>
+                    <i class="fas fa-unlock unlocked"></i>
                 </div>
-                <i class="fas fa-lock locked"></i>
-                <i class="fas fa-unlock unlocked"></i>
-            </div>
-
+            </form>
         </div>
         <script src="script.js"></script>
     </body>
