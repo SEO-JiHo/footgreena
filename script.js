@@ -33,26 +33,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitButton2 = block.querySelector('#submit-button-2');
 
 
-        // 첫 번째 폼 (이름과 성별 입력) 처리
         if (index === 0) {
             content.style.display = 'block';
             submitButton1.addEventListener('click', function () {
-                // 이름과 성별을 전역 변수에 저장
                 userName = block.querySelector('input[name="name"]').value;
                 const genderInput = block.querySelector('input[name="gender"]:checked');
                 
                 if (userName && genderInput) {
                     userGender = genderInput.value;
-                    submitButton1.disabled = true;  // 버튼 비활성화
+                    submitButton1.disabled = true;
                     alert(`이름: ${userName}, 성별: ${userGender} 저장되었습니다.`);
-                    showNextBlock(index);  // 다음 블록으로 이동
+                    showNextBlock(index);
                 } else {
                     alert("이름과 성별을 모두 입력해주세요.");
                 }
             });
         }
 
-        // 두 번째 폼 (숫자 입력) 처리
         if (index === 1) {
             const numberInput = block.querySelector('#num-input');
             const numberButton = block.querySelector('#num-button');
@@ -69,10 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
-        // 마지막 폼 (카카오톡 아이디 입력) 처리
         if (index === 6) {
             submitButton2.addEventListener('click', function (event) {
-                event.preventDefault(); // 기본 폼 제출 동작을 막음
+                event.preventDefault();
         
                 const userKakaoId = block.querySelector('input[name="kakaoId"]').value;
 
@@ -81,8 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                // 새로운 FormData 객체 생성
-                const formData = new FormData();
+                const formData = new URLSearchParams();
                 formData.append('name', userName);
                 formData.append('gender', userGender);
                 formData.append('kakaoId', userKakaoId);
@@ -90,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(formData).toString()
+                    body: formData
                 }).then(response => {
                     if (response.ok) {
                         submitButton2.disabled = true;
@@ -104,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // 체크박스 상태를 감지하여 다음 블록의 콘텐츠를 표시
         if (checkbox) {
             checkbox.addEventListener('change', function () {
                 if (this.checked) {
@@ -122,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 팝업 관련 코드
     const openPopup = document.getElementById('open-popup');
     const popup = document.getElementById('popup');
     const closePopup = document.getElementById('close-popup');
