@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 formData.append('gender', userGender);
                 formData.append('kakaoId', userKakaoId);
 
-                fetch('https://footgreena.netlify.app/.netlify/functions/submit', {
+                fetch('/.netlify/functions/submit', {
                     method: 'POST',
                     body: formData
                 }).then(response => {
