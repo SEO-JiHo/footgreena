@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 fetch('/.netlify/functions/submit', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: formData
                 }).then(response => {
                     if (response.ok) {
