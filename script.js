@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 formData.append('gender', userGender);
                 formData.append('kakaoId', userKakaoId);
 
-                fetch('/', {
+                fetch('/.netlify/functions/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: formData
