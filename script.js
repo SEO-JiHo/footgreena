@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (userName && genderInput) {
                     userGender = genderInput.value;
                     submitButton1.disabled = true;
-                    alert(`이름: ${userName}, 성별: ${userGender} 저장되었습니다.`);
                     showNextBlock(index);
                 } else {
                     alert("이름과 성별을 모두 입력해주세요.");
@@ -77,6 +76,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
+                const loadingIndicator = document.getElementById('loading-indicator');
+                loadingIndicator.style.display = 'block';
+
                 fetch('/.netlify/functions/submit', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
@@ -94,6 +96,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }).catch(error => {
                     alert('데이터 전송 중 오류가 발생했습니다: ' + error.message);
+                }).finally(() => {
+                    loadingIndicator.style.display = 'none';
                 });
             });
         }
