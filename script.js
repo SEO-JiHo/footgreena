@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     submitButton1.disabled = true;
                     showNextBlock(index);
                 } else {
-                    alert("이름과 성별을 모두 입력해주세요.");
+                    showPopup("이름과 성별을 모두 입력해주세요.")
                 }
             });
         }
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     showNextBlock(index);
                     numberButton.disabled = true;
                 } else {
-                    alert('틀렸습니다. 다시 입력해주세요.');
+                    showPopup('틀렸습니다. 다시 입력해주세요.');
                 }
             });
         }
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const userKakaoId = block.querySelector('input[name="kakaoId"]').value;
 
                 if (!userKakaoId) {
-                    alert("카카오 ID를 입력해주세요.");
+                    showPopup("카카오톡 ID를 입력해주세요.");
                     return;
                 }
 
@@ -90,12 +90,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 }).then(response => {
                     if (response.ok) {
                         submitButton2.disabled = true;
-                        alert('데이터가 성공적으로 전송되었습니다.\n즐겁고 안전한 풋살되시기 바랍니다!');
+                        showPopup('데이터가 성공적으로 전송되었습니다.\n즐겁고 안전한 풋살되시기 바랍니다!');
                     } else {
-                        alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+                        showPopup('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
                     }
                 }).catch(error => {
-                    alert('데이터 전송 중 오류가 발생했습니다: ' + error.message);
+                    showPopup('데이터 전송 중 오류가 발생했습니다: ' + error.message);
                 }).finally(() => {
                     loadingIndicator.style.display = 'none';
                 });
@@ -119,21 +119,44 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    const openPopup = document.getElementById('open-popup');
-    const popup = document.getElementById('popup');
-    const closePopup = document.getElementById('close-popup');
+    function showPopup(message = '', imageUrl = '') {
+        const popup = document.getElementById('popup');
+        const popupMessage = popup.querySelector('p');
+        const popupImage = popup.querySelector('.popup-image');
 
-    if (openPopup) {
-        openPopup.addEventListener('click', function () {
-            popup.style.display = 'block';
-        });
-    }
-    
-    if (closePopup) {
-        closePopup.addEventListener('click', function () {
+        if (message) {
+            popupMessage.textContent = message;
+            popupMessage.style.display = 'block';
+        } else {
+            popupMessage.style.display = 'none';
+        }
+
+        if (imageUrl) {
+            popupImage.src = imageUrl;
+            popupImage.style.display = 'block';
+        } else {
+            popupImage.style.display = 'none';
+        }
+
+        popup.style.display = 'block';
+
+        const closeButton = popup.querySelector('.close');
+        closeButton.addEventListener('click', function () {
             popup.style.display = 'none';
         });
     }
+
+    const openPopupButtons = document.querySelectorAll('[data-open-popup]');
+
+    openPopupButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const popupMessage = button.dataset.popupMessage || '';
+            const popupImage = button.dataset.popupImage || '';
+
+            showPopup(popupMessage, popupImage);
+        });
+    });
+
 
     window.addEventListener('click', function (event) {
         if (event.target === popup) {
@@ -141,4 +164,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-});
+    });

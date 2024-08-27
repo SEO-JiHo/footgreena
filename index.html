@@ -170,12 +170,17 @@
                 <div class="block" id="block7">
                     <div class="content">
                         <h3>Welcome Again !</h3>
-                        회비 납부 안내 및 비상 연락을 위한 카카오톡 아이디를 입력해주세요.<span id="open-popup"> [아이디를 어떻게 확인하는지 모르겠어요]</span>
+                        회비 납부 안내 및 비상 연락을 위한 카카오톡 아이디를 입력해주세요.
+                        <span data-open-popup data-popup-message="카카오톡 친구 창 → 친구 추가 → 카카오톡 ID" data-popup-image="images/popupimg.jpg" id="open-popup">
+                            [아이디를 어떻게 확인하는지 모르겠어요]
+                        </span>
+                
                         <div id="popup" class="popup">
-                            <span id="close-popup" class="close">&times;</span>
-                            <img src="images/popupimg.jpg" alt="Popup Image" class="popup-image">
-                            <span id="popup-text">카카오톡 친구 창 → 친구 추가 → 카카오톡 ID</span>
+                            <span class="close">&times;</span>
+                            <img src="" alt="Popup Image" class="popup-image">
+                            <p></p>
                         </div>
+                
                         <div class="block-in-container">
                             <div class="block-in">
                                 <label for="kakaoId">kakao ID: 
@@ -184,8 +189,10 @@
                                 <p class="button-container">
                                     <button type="button" class="btn" id="submit-button-2">확인</button>
                                 </p>
+                                <div id="loading-indicator" style="display: none;">데이터 전송 중입니다...</div>
                             </div>
                         </div>
+                
                         회비는 5,000원이며, 최초 1회 납부 후 회비 소진 시 재납부합니다. 연 1회 정도입니다.<br>
                         운영진과 일부 멤버분들의 봉사와 희생 덕분에 회비가 저렴하게 유지되고 있습니다. 필요한 경우 도움을 주시면 모임 운영에 큰 도움이 됩니다.<br>
                         <h3 style="text-align: center;">풋그리나에 오신 것을 다시 한 번 환영합니다!</h3>
@@ -193,6 +200,7 @@
                     <i class="fas fa-lock locked"></i>
                     <i class="fas fa-unlock unlocked"></i>
                 </div>
+                
             </form>
         </div>
         <script src="script.js"></script>
