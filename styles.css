@@ -85,9 +85,9 @@ input[type="checkbox"] {
     display: inline-block;
 }
 
-.content {
+/* .content {
     display: none;
-}
+} */
 
 .block .locked {
     position: absolute;
@@ -215,6 +215,17 @@ a:visited {
 
 #open-popup {
     color: #2b84d2;
+}
+
+#loading-indicator {
+    margin: 0;
+    animation: blink 0.7s step-start infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @keyframes revealBlock {

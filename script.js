@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }).then(response => {
                     if (response.ok) {
                         submitButton2.disabled = true;
-                        showPopup('데이터가 성공적으로 전송되었습니다.\n즐겁고 안전한 풋살되시기 바랍니다!');
+                        showPopup('데이터가 성공적으로 전송되었습니다.\n\n즐겁고 안전한 풋살되시기 바랍니다!');
                     } else {
                         showPopup('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
                     }
@@ -155,13 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             showPopup(popupMessage, popupImage);
         });
-    });
-
-
-    window.addEventListener('click', function (event) {
-        if (event.target === popup) {
-            popup.style.display = 'none';
-        }
     });
 
     });
