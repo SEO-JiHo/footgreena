@@ -85,9 +85,9 @@ input[type="checkbox"] {
     display: inline-block;
 }
 
-/* .content {
+.content {
     display: none;
-} */
+}
 
 .block .locked {
     position: absolute;
