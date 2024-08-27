@@ -77,14 +77,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                const formData = new URLSearchParams();
-                formData.append('name', userName);
-                formData.append('gender', userGender);
-                formData.append('kakaoId', userKakaoId);
-
                 fetch('/.netlify/functions/submit', {
                     method: 'POST',
-                    body: formData
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        name: userName,
+                        gender: userGender,
+                        kakaoId: userKakaoId
+                    })
                 }).then(response => {
                     if (response.ok) {
                         submitButton2.disabled = true;
