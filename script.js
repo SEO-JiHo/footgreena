@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     submitButton1.disabled = true;
                     showNextBlock(index);
                 } else {
-                    showPopup("이름과 성별을 모두 입력해주세요.")
+                    alert("이름과 성별을 모두 입력해주세요.")
                 }
             });
         }
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     showNextBlock(index);
                     numberButton.disabled = true;
                 } else {
-                    showPopup('틀렸습니다. 다시 입력해주세요.');
+                    alert('틀렸습니다. 다시 입력해주세요.');
                 }
             });
         }
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const userKakaoId = block.querySelector('input[name="kakaoId"]').value;
 
                 if (!userKakaoId) {
-                    showPopup("카카오톡 ID를 입력해주세요.");
+                    alert("카카오톡 ID를 입력해주세요.");
                     return;
                 }
 
@@ -90,12 +90,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 }).then(response => {
                     if (response.ok) {
                         submitButton2.disabled = true;
-                        showPopup('데이터가 성공적으로 전송되었습니다.\n\n즐겁고 안전한 풋살되시기 바랍니다!');
+                        alert('데이터가 성공적으로 전송되었습니다.\n\n즐겁고 안전한 풋살되시기 바랍니다!');
                     } else {
-                        showPopup('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+                        alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
                     }
                 }).catch(error => {
-                    showPopup('데이터 전송 중 오류가 발생했습니다: ' + error.message);
+                    alert('데이터 전송 중 오류가 발생했습니다: ' + error.message);
                 }).finally(() => {
                     loadingIndicator.style.display = 'none';
                 });
@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function showPopup(message = '', imageUrl = '') {
+
         const popup = document.getElementById('popup');
         const popupMessage = popup.querySelector('p');
         const popupImage = popup.querySelector('.popup-image');
@@ -156,5 +157,4 @@ document.addEventListener('DOMContentLoaded', function () {
             showPopup(popupMessage, popupImage);
         });
     });
-
-    });
+});
