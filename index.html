@@ -1,212 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>풋그리나</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>
-    <body>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>풋그리나 가입 신청</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
 
-        <h1 class="block-effect" style="--td: 1.2s">
-            <img src="images/logo.png" width="20%">
-            <div class="block-reveal" style="--bc: #3dcbff; --d: .1s">풋그리나에 오신 것을</div>
-            <div class="block-reveal" style="--bc: #7c009b; --d: .5s">환영합니다! <i class="fa-regular fa-futbol"></i></div>
-            <div class="fade-in">아래 안내 사항을 끝까지 읽어주세요.</div>
-        </h1>
+    <h1 class="block-effect" style="--td: 1.2s">
+        <img src="images/logo.png" alt="풋그리나 로고" width="120px" style="margin-bottom: 20px;" onerror="this.style.display='none'">
+        <div class="block-reveal" style="--bc: #BF00FF; --d: .1s">풋그리나에 오신 것을</div>
+        <div class="block-reveal" style="--bc: #6cafea; --d: .5s">환영합니다!</div>
+        <div class="fade-in">아래 수칙을 하나씩 확인해주세요.</div>
+    </h1>
 
-        <div class="view">
-            <form name="user-data" method="POST" data-netlify="true" action="/.netlify/functions/submit">
-                <div class="block" id="block1">
-                    <div class="content">
-                        <h3>Welcome !</h3>
-                        <p>소모임 가입 정보와 일치하는지 확인하기 위해 이름과 성별을 입력해주세요.</p>
-                        <div class="block-in-container">
-                            <div class="block-in">
-                                <p>
-                                    <label for="name">이름: <input type="text" name="name" id="name" required /></label>
+    <div class="view">
+        <form name="user-data" method="POST">
+            <!-- 스팸 방지를 위한 Honeypot 필드 (사람에게는 보이지 않음) -->
+            <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+            <!-- 블록 1: 기본 정보 입력 -->
+            <div class="block" id="block1">
+                <div class="content">
+                    <h3>본인 확인 및 동의</h3>
+                    <p>소모임 가입 정보와 일치하는지 확인하기 위해 이름과 성별을 입력해주세요.</p>
+                    <div class="block-in-container">
+                        <div class="block-in">
+                            <p><label for="name">이름: <input type="text" name="name" id="name" required /></label></p>
+                            <p>
+                                <label>성별: <input type="radio" name="gender" value="male" required /> 남자</label>
+                                <label><input type="radio" name="gender" value="female" required /> 여자</label>
+                            </p>
+                            
+                            <!-- 개인정보 수집 동의 -->
+                            <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+                                <p style="font-size: 0.8rem; color: #666; margin-bottom: 8px;">
+                                    [개인정보 수집 동의]<br>
+                                    항목: 이름, 성별, 카카오톡 ID<br>
+                                    목적: 가입 확인 및 회비 안내
                                 </p>
-                                <p>
-                                    <label>성별:
-                                        <input type="radio" name="gender" value="male" required /> 남자
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="gender" value="female" required /> 여자
-                                    </label>
-                                </p>
-                                <p class="button-container">
-                                    <button type="button" class="btn" id="submit-button-1">확인</button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="block" id="block2">        
-                    <div class="content">
-                        <h3>운동 요일 및 경기 참석 방법</h3>
-                        <ul style="padding-left: 20px;">
-                            <li>풋살 경기(정기모임)는 매주 월, 목요일 20~22시, 일요일 10~12시에 진행됩니다.</li>
-                            <li>경기 참여는 소모임 앱을 통해 <b>선착순</b>으로 이루어집니다.</li>
-                            <li>만석일 경우 <b>경기 이틀 전부터</b> 카톡 대화방, 신문고방을 통해 대기자 명단 요청을 해주시면 게시글을 작성해 드리겠습니다. 대기자 명단에 댓글을 등록하시면 취소 인원 발생 시 순서대로 입장 가능합니다.</li>
-                        </ul>
-                        <div class="block-in-container">
-                            <div class="block-in">
-                                <p>
-                                    대기 명단 요청은
-                                    <input type="text" class="numbox" id="num-input" placeholder="?" />
-                                    일 전부터 가능하다.
-                                </p>
-                                <div class="link-click">숫자를 입력해주세요.</div>
-                                <p class="button-container">
-                                    <button type="button" class="btn" id="num-button">확인</button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <i class="fas fa-lock locked"></i>
-                    <i class="fas fa-unlock unlocked"></i>
-                </div>
-                
-                <div class="block" id="block3">
-                    <div class="content">
-                        <h3>준비물 및 경기 당일 안내</h3>
-                        <ul style="padding-left: 20px;">
-                            <li>풋살화, 음료, 팀조끼는 <b>개별 지참</b>해 주시기 바랍니다. 조끼 색상은 형광노란색 혹은 형광분홍색 가능합니다.</li>
-                            <li><b>경기 시작 10분 전까지</b> 구장에 모여주시기 바랍니다. 준비 운동과 팀 나누기에 시간이 소요되므로, 10분 전까지 참여하지 않으면 지각으로 간주됩니다.</li>
-                            <li>정시에 참석하기 어려운 경우, 반드시 다른 참석자분들께 양해를 구해 주시기 바랍니다. 지각이 누적될 경우, 경고나 퇴출 조치가 있을 수 있습니다.</li>
-                        </ul>
-                        <label>
-                            <div class="block-in-container">
-                                <div class="block-in">
-                                    <input type="checkbox" />
-                                    위 내용을 확인했습니다.
-                                </div>
-                            </div>
-                        </label>
-                    </div>
-                    <i class="fas fa-lock locked"></i>
-                    <i class="fas fa-unlock unlocked"></i>
-                </div>
-
-                <div class="block" id="block4">
-                    <div class="content">
-                        <h3>경기 중 유의사항</h3>
-                        <ul style="padding-left: 20px;">
-                            <li>혼성 경기인 만큼 <b>몸싸움은 지양</b>합니다.</li>
-                            <li><b>무엇보다 중요한 것은 멤버들과의 조화입니다.</b> 입문자분들도 즐길 수 있도록 배려하는 분위기를 함께 만들어 주세요.</li>
-                            <li><b>남성분들</b>은 패널티 에어리어 안에서만 인사이드 슈팅이 가능합니다.</li>
-                        </ul>
-                        <label>
-                            <div class="button-container">
-                                <img src="images/field.jpg" class="img-field">
-                                <div class="block-in-container">
-                                    <div class="block-in">
-                                        <input type="checkbox" />
-                                        위 내용을 확인했습니다.
-                                    </div>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
-                    <i class="fas fa-lock locked"></i>
-                    <i class="fas fa-unlock unlocked"></i>
-                </div>
-
-                <div class="block" id="block5">
-                    <div class="content">
-                        <h3>경기 참석 및 취소</h3>
-                        <ul style="padding-left: 20px;">
-                            <li>한 달에 두 번 이상 참석해주세요. 참석률이 저조한 경우 퇴출 조치가 있을 수 있습니다.</li>
-                            <li>경기 <b>전날~당일</b>에 경기 참석을 취소할 경우, 다른 멤버들이 알 수 있도록 단체톡방에 취소했다고 말씀 부탁드립니다.</li>
-                            <li>경기 <b>전날~당일</b>에 참여할 경우에도 단체톡방에 말씀 부탁드립니다. 경기 시작 후 사전에 합의되지 않은 <b>중도 참여는 불가</b>합니다.</li>
-                            <li>기상 악화가 예보된 경우, 참석자분들끼리 경기 진행 여부를 상의하시고, 참석 여부는 자유롭게 결정하시면 됩니다.</li>
-                        </ul>
-                        <label>
-                            <div class="block-in-container">
-                                <div class="block-in">
-                                    <input type="checkbox" />
-                                    위 내용을 확인했습니다.
-                                </div>
-                            </div>
-                        </label>
-                    </div>
-                    <i class="fas fa-lock locked"></i>
-                    <i class="fas fa-unlock unlocked"></i>
-                </div>
-
-                <div class="block" id="block6">
-                    <div class="content">
-                        <h3>소통 및 문의</h3>
-                        <div class="block-in-container">
-                            <div class="block-in">
-                                <a href="https://open.kakao.com/o/g1sCUT8d" target="_blank" rel="noopener noreferrer">공지방</a>
-                                <a href="https://open.kakao.com/o/gomQsvje" target="_blank" rel="noopener noreferrer">대화방</a>
-                                <a href="https://open.kakao.com/o/gg3qXoZf" target="_blank" rel="noopener noreferrer">신문고방</a>
-                                <div class="link-click">클릭하시면 해당 링크가 열립니다.</div>
-                            </div>
-                        </div>
-                        <ul style="padding-left: 20px;">
-                            <li><b>공지방, 대화방은 필수로 입장해주세요.</b>
-                                <ul>
-                                    <li>공지방: 운영진이 공지 전달</li>
-                                    <li>대화방: 멤버 개인의 경기 참석/취소 여부 전달, 경기 성사 여부 논의, 잡담이나 간단한 질문</li>
-                                </ul>
-                            </li>
-                            <li><b>문의, 건의, 불만사항이 있는 경우 신문고방에 입장하여 해결</b>하시면 됩니다. - 개인톡 지양<br>신문고방 링크는 공지방에서도 확인 가능합니다.</li>
-                        </ul>
-                        <label>
-                            <div class="button-container">
-                                <div class="block-in-container">
-                                    <div class="block-in">
-                                        <input type="checkbox" />
-                                        위 내용을 확인했습니다.
-                                    </div>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
-                    <i class="fas fa-lock locked"></i>
-                    <i class="fas fa-unlock unlocked"></i>
-                </div>
-
-                <div class="block" id="block7">
-                    <div class="content">
-                        <h3>Welcome Again !</h3>
-                        회비 납부 안내 및 비상 연락을 위한 카카오톡 아이디를 입력해주세요.
-                        <span data-open-popup data-popup-message="카카오톡 친구 창 → 친구 추가 → 카카오톡 ID" data-popup-image="images/popupimg.jpg" id="open-popup">
-                            [아이디를 어떻게 확인하는지 모르겠어요]
-                        </span>
-                
-                        <div id="popup" class="popup">
-                            <span class="close">&times;</span>
-                            <img src="" alt="Popup Image" class="popup-image">
-                            <p></p>
-                        </div>
-                
-                        <div class="block-in-container">
-                            <div class="block-in">
-                                <label for="kakaoId">kakao ID: 
-                                    <input type="text" name="kakaoId" id="kakaoId" required />
+                                <label style="font-size: 0.9rem; cursor: pointer;">
+                                    <input type="checkbox" id="privacy-check" required> 위 내용을 확인했으며 동의합니다.
                                 </label>
-                                <p class="button-container">
-                                    <button type="button" class="btn" id="submit-button-2">확인</button>
-                                </p>
-                                <div id="loading-indicator" style="display: none;">데이터 전송 중입니다...</div>
+                            </div>
+
+                            <p class="button-container">
+                                <button type="button" class="btn" id="submit-button-1">확인</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="block" id="block2">        
+                <div class="content">
+                    <h3>운동 요일 및 경기 참석 방법</h3>
+                    <ul class="check-list">
+                        <li>풋살 경기는 매주 월, 목요일 20~22시, 일요일 10~12시에 진행됩니다. <button type="button" class="li-check-btn">확인</button></li>
+                        <li>경기 참여는 소모임 앱을 통해 선착순으로 이루어집니다. <button type="button" class="li-check-btn">확인</button></li>
+                        <li>만석일 경우 이틀 전부터 대기자 명단 요청이 가능합니다. <button type="button" class="li-check-btn">확인</button></li>
+                    </ul>
+                    <div class="block-in-container">
+                        <div class="block-in">
+                            <p style="margin-top: 10px;">Quiz) 대기 명단 요청은 <input type="text" class="numbox" id="num-input" placeholder="?" /> 일 전부터 가능하다.</p>
+                            <p class="button-container">
+                                <button type="button" class="btn" id="num-button">확인</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+            </div>
+            
+            <div class="block" id="block3">
+                <div class="content">
+                    <h3>준비물 및 경기 당일 안내</h3>
+                    <ul class="check-list">
+                        <li>풋살화, 음료, 팀조끼는 개별 지참해 주시기 바랍니다. <button type="button" class="li-check-btn">확인</button></li>
+                        <li>경기 시작 10분 전까지 구장에 모여주시기 바랍니다. <button type="button" class="li-check-btn">확인</button></li>
+                        <li>지각이 누적될 경우, 경고나 퇴출 조치가 있을 수 있습니다. <button type="button" class="li-check-btn">확인</button></li>
+                    </ul>
+                </div>
+                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+            </div>
+
+            <div class="block" id="block4">
+                <div class="content">
+                    <h3>경기 중 유의사항</h3>
+                    <ul class="check-list">
+                        <li>혼성 경기인 만큼 몸싸움은 지양합니다. <button type="button" class="li-check-btn">확인</button></li>
+                        <li>입문자분들도 즐길 수 있도록 배려하는 분위기를 만들어 주세요. <button type="button" class="li-check-btn">확인</button></li>
+                        <div class="img-container"><img src="images/field.jpg" class="img-field"></div>
+                        <li>남성분들은 패널티 에어리어 안에서만 인사이드 슈팅이 가능합니다. <button type="button" class="li-check-btn">확인</button></li>
+                    </ul>
+                </div>
+                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+            </div>
+
+            <div class="block" id="block5">
+                <div class="content">
+                    <h3>경기 참석 및 취소</h3>
+                    <ul class="check-list">
+                        <li>한 달에 두 번 이상 참석해주세요. <button type="button" class="li-check-btn">확인</button></li>
+                        <li>당일 취소 시 반드시 단체톡방에 공유 부탁드립니다. <button type="button" class="li-check-btn">확인</button></li>
+                        <li>사전에 합의되지 않은 중도 참여는 불가합니다. <button type="button" class="li-check-btn">확인</button></li>
+                    </ul>
+                </div>
+                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+            </div>
+
+            <div class="block" id="block6">
+                <div class="content">
+                    <h3>소통 및 문의</h3>
+                    <ul class="check-list">
+                        <li>공지방, 대화방은 필수로 입장해주세요.<button type="button" class="li-check-btn">확인</button></li>
+                        <li>문의사항은 신문고방을 이용해주세요.<button type="button" class="li-check-btn">확인</button></li>
+                    </ul>
+                </div>
+                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+            </div>
+
+            <div class="block" id="block7">
+                <div class="content">
+                    <h3>최종 단계</h3>
+                    <p>회비 안내를 위한 카카오톡 ID를 입력해주세요.</p>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">아래 슬라이더에서 ID 확인 방법을 참고하세요.</p>
+                    
+                    <!-- 이미지 슬라이더 -->
+                    <div class="image-slider-container">
+                        <div class="slider-wrapper">
+                            <div class="slide current">
+                                <img src="images/slide1.jpg" alt="카카오톡 ID 확인 방법 1" onerror="this.src='https://via.placeholder.com/360x730/BF00FF/FFFFFF?text=Image+1'">
+                            </div>
+                            <div class="slide next">
+                                <img src="images/slide2.jpg" alt="카카오톡 ID 확인 방법 2" onerror="this.src='https://via.placeholder.com/360x730/6cafea/FFFFFF?text=Image+2'">
+                            </div>
+                            <div class="slide hidden">
+                                <img src="images/slide3.jpg" alt="카카오톡 ID 확인 방법 3" onerror="this.src='https://via.placeholder.com/360x730/a000d6/FFFFFF?text=Image+3'">
+                            </div>
+                            <div class="slide hidden">
+                                <img src="images/slide4.jpg" alt="카카오톡 ID 확인 방법 4" onerror="this.src='https://via.placeholder.com/360x730/BF00FF/FFFFFF?text=Image+4'">
                             </div>
                         </div>
-                
-                        회비는 10,000원이며, 최초 1회 납부 후 회비 소진 시 재납부합니다. 연 1회 정도입니다.<br>
-                        운영진과 일부 멤버분들의 봉사와 희생 덕분에 회비가 저렴하게 유지되고 있습니다. 필요한 경우 도움을 주시면 모임 운영에 큰 도움이 됩니다.<br>
-                        <h3 style="text-align: center;">풋그리나에 오신 것을 다시 한 번 환영합니다!</h3>
+                        
+                        <!-- 슬라이더 네비게이션 -->
+                        <button class="slider-nav prev" aria-label="이전 이미지">‹</button>
+                        <button class="slider-nav next" aria-label="다음 이미지">›</button>
+                        
+                        <!-- 인디케이터 -->
+                        <div class="slider-indicators">
+                            <span class="indicator active" data-slide="0"></span>
+                            <span class="indicator" data-slide="1"></span>
+                            <span class="indicator" data-slide="2"></span>
+                            <span class="indicator" data-slide="3"></span>
+                        </div>
                     </div>
-                    <i class="fas fa-lock locked"></i>
-                    <i class="fas fa-unlock unlocked"></i>
+
+                    <div class="block-in-container">
+                        <div class="block-in">
+                            <label>kakao ID: <input type="text" name="kakaoId" id="kakaoId" required /></label>
+                            <p style="font-size: 0.95rem; color: #4b4b4b; margin-bottom: 15px;">
+                                <br>가입 완료 후 공지방으로 자동 연결됩니다.<br>
+                                대화방과 신문고방은 공지방에서 확인하실 수 있습니다.
+                            </p>
+                            <p class="button-container">
+                                <button type="button" class="btn" id="submit-button-2">가입 신청 완료 🥳</button>
+                            </p>
+                            <div id="loading-indicator" style="display: none;">전송 중...</div>
+                        </div>
+                    </div>
                 </div>
-                
-            </form>
-        </div>
-        <script src="script.js"></script>
-    </body>
+                <i class="fas fa-lock locked"></i>
+                <i class="fas fa-unlock unlocked"></i>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
