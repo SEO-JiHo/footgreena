@@ -11,12 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function updateSlider() {
             slides.forEach((slide, index) => {
-                slide.classList.remove('current', 'next', 'hidden');
+                slide.classList.remove('current', 'next', 'prev', 'hidden');
                 
                 if (index === currentSlideIndex) {
                     slide.classList.add('current');
                 } else if (index === currentSlideIndex + 1) {
                     slide.classList.add('next');
+                } else if (index === currentSlideIndex - 1) {
+                    slide.classList.add('prev');
                 } else {
                     slide.classList.add('hidden');
                 }

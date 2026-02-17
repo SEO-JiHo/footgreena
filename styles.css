@@ -281,6 +281,14 @@ input[type="checkbox"] {
     z-index: 1;
 }
 
+/* 이전 이미지 (왼쪽으로 사라짐) */
+.slide.prev {
+    left: -200px;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.2);
+    z-index: 0;
+}
+
 /* 나머지 이미지들 (숨김) */
 .slide.hidden {
     opacity: 0;
