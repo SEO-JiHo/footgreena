@@ -1,5 +1,89 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // 0. 이미지 슬라이더 기능 (우선 실행)
+    const slides = document.querySelectorAll('.image-slider-container .slide');
+    const indicators = document.querySelectorAll('.slider-indicators .indicator');
+    const prevBtn = document.querySelector('.slider-nav.prev');
+    const nextBtn = document.querySelector('.slider-nav.next');
+    
+    if (slides.length > 0) {
+        const totalSlides = slides.length;
+        let currentSlideIndex = 0;
+
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('current', 'next', 'hidden');
+                
+                if (index === currentSlideIndex) {
+                    slide.classList.add('current');
+                } else if (index === currentSlideIndex + 1) {
+                    slide.classList.add('next');
+                } else {
+                    slide.classList.add('hidden');
+                }
+            });
+
+            // 인디케이터 업데이트
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlideIndex);
+            });
+
+            // 버튼 활성화/비활성화 제어
+            if (prevBtn) prevBtn.disabled = currentSlideIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides - 1) {
+                currentSlideIndex++;
+                updateSlider();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlider();
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSlider();
+        }
+
+        // 이벤트 리스너
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide(index));
+        });
+
+        // 키보드 네비게이션
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // 초기 상태 설정
+        updateSlider();
+    }
+
     const blocks = document.querySelectorAll('.block');
+
+    // [임시] 팀원 공유용: 모든 블록 강제 표시
+    blocks.forEach(block => {
+        const content = block.querySelector('.content');
+        if (content) {
+            content.style.display = 'block';
+            content.style.opacity = '1';
+            content.style.animation = 'none';
+        }
+        
+        const icons = block.querySelectorAll('.locked, .unlocked');
+        icons.forEach(icon => icon.style.display = 'none');
+    });
+
     let userName = '', userGender = '';
 
     // 모든 조건이 충족되었는지 검사하는 핵심 함수
@@ -134,74 +218,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 이미지 슬라이더 기능
-    const slides = document.querySelectorAll('.image-slider-container .slide');
-    const indicators = document.querySelectorAll('.slider-indicators .indicator');
-    const prevBtn = document.querySelector('.slider-nav.prev');
-    const nextBtn = document.querySelector('.slider-nav.next');
-    const totalSlides = slides.length;
-    let currentSlideIndex = 0;
 
-    function updateSlider() {
-        slides.forEach((slide, index) => {
-            slide.classList.remove('current', 'next', 'hidden');
-            
-            if (index === currentSlideIndex) {
-                slide.classList.add('current');
-            } else if (index === currentSlideIndex + 1) {
-                slide.classList.add('next');
-            } else {
-                slide.classList.add('hidden');
-            }
-        });
-
-        // 인디케이터 업데이트
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentSlideIndex);
-        });
-
-        // 버튼 활성화/비활성화 제어
-        if (prevBtn) {
-            prevBtn.disabled = currentSlideIndex === 0;
-        }
-        if (nextBtn) {
-            nextBtn.disabled = currentSlideIndex === totalSlides - 1;
-        }
-    }
-
-    function nextSlide() {
-        if (currentSlideIndex < totalSlides - 1) {
-            currentSlideIndex++;
-            updateSlider();
-        }
-    }
-
-    function prevSlide() {
-        if (currentSlideIndex > 0) {
-            currentSlideIndex--;
-            updateSlider();
-        }
-    }
-
-    function goToSlide(index) {
-        currentSlideIndex = index;
-        updateSlider();
-    }
-
-    // 이벤트 리스너
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => goToSlide(index));
-    });
-
-    // 키보드 네비게이션
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') prevSlide();
-        if (e.key === 'ArrowRight') nextSlide();
-    });
-
-    // 초기 상태 설정
-    updateSlider();
 });

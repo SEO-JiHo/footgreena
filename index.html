@@ -39,7 +39,8 @@
                                 <p style="font-size: 0.8rem; color: #666; margin-bottom: 8px;">
                                     [개인정보 수집 동의]<br>
                                     항목: 이름, 성별, 카카오톡 ID<br>
-                                    목적: 가입 확인 및 회비 안내
+                                    목적: 가입 확인 및 회비 안내<br>
+                                    보유 기간: 가입일로부터 30일
                                 </p>
                                 <label style="font-size: 0.9rem; cursor: pointer;">
                                     <input type="checkbox" id="privacy-check" required> 위 내용을 확인했으며 동의합니다.
@@ -71,19 +72,19 @@
                         </div>
                     </div>
                 </div>
-                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+                <!-- <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i> -->
             </div>
             
             <div class="block" id="block3">
                 <div class="content">
                     <h3>준비물 및 경기 당일 안내</h3>
                     <ul class="check-list">
-                        <li>풋살화, 음료, 팀조끼는 개별 지참해 주시기 바랍니다. <button type="button" class="li-check-btn">확인</button></li>
+                        <li>풋살화, 음료, 팀조끼(형광초록/분홍색 통일)는 개별 지참해 주시기 바랍니다. <button type="button" class="li-check-btn">확인</button></li>
                         <li>경기 시작 10분 전까지 구장에 모여주시기 바랍니다. <button type="button" class="li-check-btn">확인</button></li>
                         <li>지각이 누적될 경우, 경고나 퇴출 조치가 있을 수 있습니다. <button type="button" class="li-check-btn">확인</button></li>
                     </ul>
                 </div>
-                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+                <!-- <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i> -->
             </div>
 
             <div class="block" id="block4">
@@ -96,7 +97,7 @@
                         <li>남성분들은 패널티 에어리어 안에서만 인사이드 슈팅이 가능합니다. <button type="button" class="li-check-btn">확인</button></li>
                     </ul>
                 </div>
-                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+                <!-- <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i> -->
             </div>
 
             <div class="block" id="block5">
@@ -104,11 +105,11 @@
                     <h3>경기 참석 및 취소</h3>
                     <ul class="check-list">
                         <li>한 달에 두 번 이상 참석해주세요. <button type="button" class="li-check-btn">확인</button></li>
-                        <li>당일 취소 시 반드시 단체톡방에 공유 부탁드립니다. <button type="button" class="li-check-btn">확인</button></li>
+                        <li><b>경기 전날~당일 참석 또는 취소 시 반드시 단체톡방에 공유 부탁드립니다.</b> <button type="button" class="li-check-btn">확인</button></li>
                         <li>사전에 합의되지 않은 중도 참여는 불가합니다. <button type="button" class="li-check-btn">확인</button></li>
                     </ul>
                 </div>
-                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+                <!-- <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i> -->
             </div>
 
             <div class="block" id="block6">
@@ -119,7 +120,7 @@
                         <li>문의사항은 신문고방을 이용해주세요.<button type="button" class="li-check-btn">확인</button></li>
                     </ul>
                 </div>
-                <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i>
+                <!-- <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i> -->
             </div>
 
             <div class="block" id="block7">
@@ -146,8 +147,8 @@
                         </div>
                         
                         <!-- 슬라이더 네비게이션 -->
-                        <button class="slider-nav prev" aria-label="이전 이미지">‹</button>
-                        <button class="slider-nav next" aria-label="다음 이미지">›</button>
+                        <button type="button" class="slider-nav prev" aria-label="이전 이미지">‹</button>
+                        <button type="button" class="slider-nav next" aria-label="다음 이미지">›</button>
                         
                         <!-- 인디케이터 -->
                         <div class="slider-indicators">
@@ -162,8 +163,8 @@
                         <div class="block-in">
                             <label>kakao ID: <input type="text" name="kakaoId" id="kakaoId" required /></label>
                             <p style="font-size: 0.95rem; color: #4b4b4b; margin-bottom: 15px;">
-                                <br>가입 완료 후 공지방으로 자동 연결됩니다.<br>
-                                대화방과 신문고방은 공지방에서 확인하실 수 있습니다.
+                                <br>가입 완료 후 공지방으로 연결됩니다.<br>
+                                대화방과 신문고방 링크는 공지방에서 확인하실 수 있습니다.
                             </p>
                             <p class="button-container">
                                 <button type="button" class="btn" id="submit-button-2">가입 신청 완료 🥳</button>
@@ -172,8 +173,7 @@
                         </div>
                     </div>
                 </div>
-                <i class="fas fa-lock locked"></i>
-                <i class="fas fa-unlock unlocked"></i>
+                <!-- <i class="fas fa-lock locked"></i><i class="fas fa-unlock unlocked"></i> -->
             </div>
         </form>
     </div>
