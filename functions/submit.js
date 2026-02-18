@@ -30,10 +30,16 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // 4. 데이터 정제 (공백 제거 등)
+    // 4. 데이터 정제 및 날짜 생성
     const cleanName = name.trim();
     const cleanGender = gender.trim();
     const cleanKakaoId = kakaoId.trim();
+    
+    // 현재 날짜 (KST 기준)
+    const now = new Date();
+    const kstOffset = 9 * 60 * 60 * 1000; // 9시간 밀리초
+    const kstDate = new Date(now.getTime() + kstOffset);
+    const dateStr = kstDate.toISOString().split('T')[0]; // YYYY-MM-DD 형식 추출
 
     // 5. 구글 인증 세팅
     const keyFile = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
@@ -44,7 +50,7 @@ exports.handler = async (event, context) => {
 
     const client = await auth.getClient();
     const spreadsheetId = '1YAzOk0jtyF9U2LfwNiMNIdJ2vbgzScrM90oISCb2hbU';
-    const range = 'sheet1!A2:C2';
+    const range = 'sheet1!A2:D2';
 
     // 6. 구글 시트 데이터 추가
     await sheets.spreadsheets.values.append({
@@ -53,7 +59,7 @@ exports.handler = async (event, context) => {
       range,
       valueInputOption: 'RAW',
       requestBody: {
-        values: [[cleanName, cleanGender, cleanKakaoId]],
+        values: [[cleanName, cleanGender, cleanKakaoId, dateStr]],
       },
     });
 

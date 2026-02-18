@@ -1,5 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // 0. 이미지 슬라이더 기능 (우선 실행)
+
+    // 0. 이미지 슬라이더 tmp
+
+    const blocks = document.querySelectorAll('.block');
+
+    let userName = '', userGender = '';
+
+    // 모든 조건이 충족되었는지 검사하는 핵심 함수
+    function checkBlockCompletion(block, index) {
+        const liButtons = block.querySelectorAll('.li-check-btn');
+        const allLiChecked = liButtons.length > 0 && Array.from(liButtons).every(btn => btn.classList.contains('active'));
+
+        // 블록 2 특수 조건: 리스트 버튼들 + 퀴즈 정답
+        if (index === 1) {
+            const numBtn = block.querySelector('#num-button');
+            if (allLiChecked && numBtn.disabled) {
+                showNextBlock(index);
+            }
+        } 
+        // 리스트 버튼만 있는 일반 블록들 (Block 2~5)
+        else if (allLiChecked) {
+            showNextBlock(index);
+        }
+    }
+
+        // 0. 이미지 슬라이더 기능 (우선 실행)
     const slides = document.querySelectorAll('.image-slider-container .slide');
     const indicators = document.querySelectorAll('.slider-indicators .indicator');
     const prevBtn = document.querySelector('.slider-nav.prev');
@@ -69,41 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 초기 상태 설정
         updateSlider();
-    }
-
-    const blocks = document.querySelectorAll('.block');
-
-    // [임시] 팀원 공유용: 모든 블록 강제 표시
-    blocks.forEach(block => {
-        const content = block.querySelector('.content');
-        if (content) {
-            content.style.display = 'block';
-            content.style.opacity = '1';
-            content.style.animation = 'none';
-        }
-        
-        const icons = block.querySelectorAll('.locked, .unlocked');
-        icons.forEach(icon => icon.style.display = 'none');
-    });
-
-    let userName = '', userGender = '';
-
-    // 모든 조건이 충족되었는지 검사하는 핵심 함수
-    function checkBlockCompletion(block, index) {
-        const liButtons = block.querySelectorAll('.li-check-btn');
-        const allLiChecked = liButtons.length > 0 && Array.from(liButtons).every(btn => btn.classList.contains('active'));
-
-        // 블록 2 특수 조건: 리스트 버튼들 + 퀴즈 정답
-        if (index === 1) {
-            const numBtn = block.querySelector('#num-button');
-            if (allLiChecked && numBtn.disabled) {
-                showNextBlock(index);
-            }
-        } 
-        // 리스트 버튼만 있는 일반 블록들 (Block 2~5)
-        else if (allLiChecked) {
-            showNextBlock(index);
-        }
     }
 
     function showNextBlock(currentIndex) {

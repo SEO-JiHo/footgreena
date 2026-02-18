@@ -72,7 +72,7 @@ h1 {
 }
 
 .content {
-    display: blcok; /* JS에서 제어 */
+    display: none; /* JS에서 제어 */
     animation: fadeIn 0.8s ease forwards;
 }
 
@@ -149,6 +149,7 @@ input:focus {
     border: 1.5px solid #BF00FF;
     color: #BF00FF;
     padding: 5px 15px;
+    margin-left: 3px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
@@ -163,14 +164,14 @@ input:focus {
 }
 
 /* 6. 아이콘 스타일 (잠금/해제) */
-/* .locked, .unlocked {
+.locked, .unlocked {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 2rem;
     color: #BF00FF;
-} */
+}
 
 .unlocked {
     color: #BF00FF;
